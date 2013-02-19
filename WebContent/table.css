@@ -19,7 +19,13 @@
 		background-position:right top;
 		}
 		
-		div {background-color:dimgrey}
+		div {background-color:white}
+		
+		table {border-collapse:collapse;}
+		table {border :10px solid skyblue;}
+		th {border:10px solid skyblue; background-color: skyblue; color: white}
+		td {border:1px solid #353535; background-color: white; color: skyblue; text-align:center; padding: 10px;}
+		
 		
 		
 		</style> 
@@ -29,5 +35,20 @@
 	<body>
 		<p class="skystyle1">Hello World!</p>
 		<p class="skystyle2">This paragraph is not affected by the style.</p>
+		
+<table>
+<tr>
+<th>Firstname</th>
+<th>Lastname</th>
+</tr>
+<tr>
+<td>Peter</td>
+<td>Griffin</td>
+</tr>
+<tr>
+<td>Lois</td>
+<td>Griffin</td>
+</tr>
+</table>
 	</body>
 </html>
