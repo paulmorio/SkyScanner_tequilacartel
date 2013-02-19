@@ -3,6 +3,7 @@
 <head>
 <title>AJAX Test</title>
 <script>
+var my_JSON_object = {};
 function loadXMLDoc(){
 	var xmlhttp;
 	if (window.XMLHttpRequest){//code for modern browsers
@@ -14,13 +15,9 @@ function loadXMLDoc(){
 	xmlhttp.onreadystatechange=function(){
 
 		if(xmlhttp.readyState==4 && xmlhttp.status==200){
-		//	alert("Query done");
+		my_JSON_object = JSON.parse(xmlhttp.responseText);
+console.log(my_JSON_object);
 
-			xmlDoc=xmlhttp.response;
-console.log(xmlhttp);
-
-//			document.getElementById("myDiv").innerHTML=xmlhttp.responseXML;
-			document.getElementById("myDiv").innerHTML=xmlDoc;
 		}
 	}
 	xmlhttp.open("GET","http://partners.api.skyscanner.net/apiservices/browsedates/v1.0/GB/GBP/en-GB/EDI/LON/anytime/anytime?apiKey=edilw015697856897893749376456547",true);
