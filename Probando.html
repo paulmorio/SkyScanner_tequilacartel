@@ -2,7 +2,6 @@
 <html>
 <head>
 <title>AJAX Test</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
 <script>
 function loadXMLDoc(){
 	var xmlhttp;
@@ -13,20 +12,15 @@ function loadXMLDoc(){
   	}
 		
 	xmlhttp.onreadystatechange=function(){
-		alert("Query done");
+
 		if(xmlhttp.readyState==4 && xmlhttp.status==200){
-			alert("Query done");
-			xmlDoc=xmlhttp.responseXML;
-			txt="";
-			x=xmlDoc.getElemntById('Carriers');
-			x=xmlDoc.getElementById('Carriers').innerHTML=xmlhttp.responseText;
-//			x=xmlDoc.getElementsByTagName("Quotes");
-			for(i=0;i<x.length;i++){
-				txt=txt + x[i].childNodes[0].nodeValue+"<br>";
-			}
+		//	alert("Query done");
+
+			xmlDoc=xmlhttp.response;
+console.log(xmlhttp);
 
 //			document.getElementById("myDiv").innerHTML=xmlhttp.responseXML;
-			document.getElementById("myDiv").innerHTML=txt;
+			document.getElementById("myDiv").innerHTML=xmlDoc;
 		}
 	}
 	xmlhttp.open("GET","http://partners.api.skyscanner.net/apiservices/browsedates/v1.0/GB/GBP/en-GB/EDI/LON/anytime/anytime?apiKey=edilw015697856897893749376456547",true);
