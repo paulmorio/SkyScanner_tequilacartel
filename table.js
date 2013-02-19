@@ -70,7 +70,7 @@ function makeTable() {
 		bt.style.width = 100;
 		bt.cell= c;
 		bt.sel = false;
-		bt.onclick = function(){select(event)};
+		bt.onclick = select;
 			//Outputs a button with the date written on it.
 
 		cell[k].appendChild(bt);
@@ -83,7 +83,7 @@ function makeTable() {
 	document.getElementById('mytable').appendChild(tab);
 	}
 
-function select(event) {
+function select() {
 
 	buttons=new Array();
 
@@ -92,7 +92,7 @@ function select(event) {
 	}
 	
 
-	if (event.ctrlKey) {
+	if (window.event.shiftKey) {
 	alert('ctrl');
 		if (isOneSel(buttons)) {
 		
