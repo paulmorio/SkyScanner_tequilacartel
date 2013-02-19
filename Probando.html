@@ -1,39 +1,36 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>AJAX Test</title>
-<script>
-function loadXMLDoc(){
-	var xmlhttp;
-	if (window.XMLHttpRequest){//code for modern browsers
-		xmlhttp=new XMLHttpRequest();
-	}else{// code for oldies IE6, IE5
-  		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  	}
-		
-	xmlhttp.onreadystatechange=function(){
-
-		if(xmlhttp.readyState==4 && xmlhttp.status==200){
-		//	alert("Query done");
-
-			xmlDoc=xmlhttp.response;
-console.log(xmlhttp);
-
-//			document.getElementById("myDiv").innerHTML=xmlhttp.responseXML;
-			document.getElementById("myDiv").innerHTML=xmlDoc;
-		}
-	}
-	xmlhttp.open("GET","http://partners.api.skyscanner.net/apiservices/browsedates/v1.0/GB/GBP/en-GB/EDI/LON/anytime/anytime?apiKey=edilw015697856897893749376456547",true);
-	xmlhttp.send();
-}
-
-</script>	
-</head>
-<body>
-<h2>List of prices:</h2>
-<div id="myDiv">
-<h2>This text should change into query results from SkyScanner</h2>
-</div>
-<button type="button" onclick="loadXMLDoc()">Change Content</button>
-</body>
-</html>
+	<html>
+	  <head>
+		<title>AJAX Test</title>
+			<script>
+			var my_JSON_object = {};
+			function loadXMLDoc(){
+				var xmlhttp;
+				if (window.XMLHttpRequest){//code for modern browsers
+					xmlhttp=new XMLHttpRequest();
+				}else{// code for oldies IE6, IE5
+  					xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  				}		
+				xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState==4 && xmlhttp.status==200){
+					my_JSON_object = JSON.parse(xmlhttp.responseText);
+					document.getElementById("myDiv").innerHTML=my_JSON_object.Quotes[0].MinPrice;
+					console.log(my_JSON_object.Quotes[0].MinPrice);
+				}
+			}
+			xmlhttp.open("GET","http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/GB/GBP/en-GB/EDI/FR/anytime/anytime?apiKey=edilw015697856897893749376456547",true);
+			xmlhttp.send();
+			}
+			</script>	
+	  </head>
+	  <body>
+		<h2>List of prices:</h2>
+		<div id="myDiv">
+		<h2>This text should change into query results from SkyScanner</h2>
+		</div>
+		<button type="button" onclick="loadXMLDoc()">Change Content</button>
+		<div id="Div2">
+		<h2>This is second box that will change</h2>
+		</div>
+	  </body>
+	</html>
