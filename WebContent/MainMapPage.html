@@ -24,35 +24,49 @@
 		background-position:top right;
 		}
 		
-		div {
-		margin-top: 600px,
+		div.skybg {
+		max-height: 600px;
+		border: 10px inset skyblue;
+		outline-style: dotted;
+		outline-color: skyblue;
+		margin-top:50px;
+		margin-bottom:50px;
 		background-color:white;
+		}
+		
+		div.skydate{
+		height: 600px;
+		width:200px;
+		padding 10px;
+		border-right: 5px solid #353535;
+		background-color:goldenrod;
+		float:left;
+		text-align: center;
 		}
 		
 		table {border-collapse:collapse;}
 		table {border :10px solid skyblue;}
 		th {border:10px solid skyblue; background-color: skyblue; color: white}
 		td {border:1px solid #353535; background-color: white; color: skyblue; text-align:center; padding: 10px;}
+		
 		</style> 
 	</head>
 	<body>
-		<div id="container">
-
-			<h1> THE MAPINATOR </h1>
+		<h1> THE MAPINATOR </h1>
+		<div class="skybg" id="container">
 		
-			<div id="menu" style="background-color:#FFD700;height:200px;width:100px;float:left;">
-			<b>Menu</b><br>
-			HTML<br>
-			CSS<br>
-			JavaScript</div>
+			<div class="skydate" id="dates">
+			<h2>DATES OR CALENDAR?</h2>
+			<br> </div>
 
-			<div id="content" style="background-color:#EEEEEE;height:200px;width:400px;float:left;">
-			Content goes here</div>
-
-			<div id="footer" style="background-color:#353535;clear:both;text-align:center; color: white">
-			EDINBURGH UNIVERSITY ILW OPENDATA HACK 2013<br> TEQUILACARTEL<sup>Yep that's our name.</sup> </div>
-
+			<div id="map" style="background-color:skyblue;height:600px;">
+			MAP GOES HERE</div>
+			
 		</div>
+		
+		<div id="footer" style="background-color:#353535;clear:both;text-align:center; color: white">
+		EDINBURGH UNIVERSITY ILW OPENDATA HACK 2013<br> TEQUILACARTEL<sup>Yep that's our name.</sup> </div>
+
 	</body>
 </html>
 
