@@ -1,8 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-
-<script>
 
 function showPosition(j,i) {
 	
@@ -25,6 +20,8 @@ window.onload=function() {
 
 	row=new Array();
 	cell=new Array();
+	
+	var buttonnode= document.createElement('button');
 
 	row_num=12; //edit this value to suit
 	cell_num=12; //edit this value to suit
@@ -40,7 +37,13 @@ window.onload=function() {
 	
 		for(k=0;k<cell_num;k++) {
 		cell[k]=document.createElement('td');
-		cont=document.createTextNode((c+1)*(k+1))
+		
+		buttonnode.setAttribute('type','button');
+		buttonnode.setAttribute('name','sal');
+		buttonnode.setAttribute('value','sal');
+		buttonnode.attachEvent('onclick', 'showPosition(c,k)');
+		
+		cont=document.createTextNode((c+1)*(k+1));
 		cell[k].appendChild(cont);
 		row[c].appendChild(cell[k]);
 		}
@@ -50,16 +53,3 @@ window.onload=function() {
 	tab.appendChild(tbo);
 	document.getElementById('mytable').appendChild(tab);
 	}
-</script>
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<h1>Table</h1>
-<button style="background-color:transparent">Transparent background!</button>
-<button id="b2" style="background-color:blue" type="button" onclick="changeColor()">Is this Red?</button>
-
-<div id="mytable"></div>
-</body>
-</html>
