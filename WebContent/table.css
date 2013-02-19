@@ -11,9 +11,12 @@
 			text-align:center;
 			color:white;
 			}
+			
 		body {
-		background-color:dimgrey;
-		background-image:url('D:\EclipseJavaPaul\SkyScanner_tequilacartel\WebContent\skyscanner_logo.png')
+		background-color:#353535;
+		background-image:url('D:/EclipseJavaPaul/SkyScanner_tequilacartel/WebContent/skyscanner_logo.png');
+		background-repeat:no-repeat;
+		background-position:right top;
 		}
 		
 		div {background-color:dimgrey}
