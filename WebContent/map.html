@@ -65,8 +65,8 @@ function style(feature) {
       map.addLayer(basemap,true);
 
       
-console.log(statesData);
-geojson = L.geoJson(statesData, {
+console.log(countries_data);
+geojson = L.geoJson(countries_data, {
     style: style,
     onEachFeature: onEachFeature
 }).addTo(map);
