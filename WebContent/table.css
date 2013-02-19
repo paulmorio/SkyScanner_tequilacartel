@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html>
-		<head>
-		<style>
-		#skystyle1
-			{
+	<head>
+		<style type="text/css">
+		.skystyle1{
 			text-align:center;
-			color:lightblue;
+			color:skyblue;
 			} 
-		</style>
-		</head>
+			
+		.skystyle2{
+			text-align:center;
+			color:white;
+			}
+		body {
+		background-color:dimgrey;
+		background-image:url('D:\EclipseJavaPaul\SkyScanner_tequilacartel\WebContent\skyscanner_logo.png')
+		}
+		
+		div {background-color:dimgrey}
+		
+		
+		</style> 
+	</head>
 
-		<body>
-			<p id="skystyle">Hello World!</p>
-			<p>This paragraph is not affected by the style.</p>
-			</body>
+	
+	<body>
+		<p class="skystyle1">Hello World!</p>
+		<p class="skystyle2">This paragraph is not affected by the style.</p>
+	</body>
 </html>
