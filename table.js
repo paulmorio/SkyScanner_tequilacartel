@@ -1,4 +1,4 @@
-	var a = 12;
+	var a = 15;
 
 window.onload=function() {
 	makeTable();
@@ -64,11 +64,10 @@ function makeTable() {
 
 		var bt = document.createElement('input');
 		bt.type = 'button';
-		bt.id = 'b' + c;
+		bt.id = c;
 		bt.style.backgroundColor = 'transparent';
 		bt.value = dateName[c];
 		bt.style.width = 100;
-		bt.cell= c;
 		bt.sel = false;
 		bt.onclick = select;
 			//Outputs a button with the date written on it.
@@ -88,19 +87,22 @@ function select() {
 	buttons=new Array();
 
 	for(c=0;c<a;c++) {
-	buttons[c]=document.getElementById('b' + c);
+	buttons[c]=document.getElementById(c);
 	}
 	
 
-	if (window.event.shiftKey) {
-	alert('ctrl');
+	if (event.shiftKey) {
 		if (isOneSel(buttons)) {
-		
-		a=this.cell - whichIsSel(buttons)
+
+		var b=whichIsSel(buttons);
 
 		deselectAll();
-		
 
+		for (i=Math.min(b,this.id);i<=Math.max(this.id,b);i++) {
+		document.getElementById(i).style.backgroundColor = 'red';
+		document.getElementById(i).sel = true;
+
+		}
 	
 		} else {
 
@@ -122,8 +124,8 @@ function select() {
 function deselectAll() {
 	
 	for(c=0;c<a;c++) {
-	document.getElementById('b' + c).style.backgroundColor = 'transparent';
-	document.getElementById('b' + c).sel = false;
+	document.getElementById(c).style.backgroundColor = 'transparent';
+	document.getElementById(c).sel = false;
 	}
 	}
 
@@ -139,13 +141,17 @@ function isOneSel(array) {
 function whichIsSel(array) {
 
 	n=array.length;
+
+	var x=-1;
 	
 	for(i=0;i<n;i++) {
-	if (array[i].sel) {
-	return i;
+		if (array[i].sel == true) {
+		x = i;
+		} else {
+		Math.max(x,-1);
+		}
 	}
-	}
-	return -1;
+	return x;
 
 	}
 
