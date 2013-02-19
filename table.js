@@ -38,11 +38,12 @@ function makeTable() {
 	row=new Array();
 	cell=new Array();
 	date=new Array();
+	dateName=new Array();
 
 	var dat = new Date();
 
-	row_num=a; //edit this value to suit
-	cell_num=1; //edit this value to suit
+	row_num=a;
+	cell_num=1;
 
 	tab=document.createElement('table');
 	tab.setAttribute('id','newtable');
@@ -51,9 +52,10 @@ function makeTable() {
 
 	for(c=0;c<row_num;c++){
 	row[c]=document.createElement('tr');
-
-	date[c]= whatDay(dat.getDay()) + "\n" + dat.getDate() + "/" + (dat.getMonth()+1) + "/" + dat.getFullYear();
+	date[c]=dat;
+	dateName[c]= whatDay(dat.getDay()) + "\n" + dat.getDate() + "/" + (dat.getMonth()+1) + "/" + dat.getFullYear();
 	dat.setDate(dat.getDate() + 1);
+		//sets the dates to each element of the Array date[].
 	
 	
 	
@@ -64,9 +66,12 @@ function makeTable() {
 		bt.type = 'button';
 		bt.id = 'b' + c;
 		bt.style.backgroundColor = 'transparent';
-		bt.value = date[c];
+		bt.value = dateName[c];
 		bt.style.width = 100;
-		bt.onclick = changeColor;
+		bt.cell= c;
+		bt.sel = false;
+		bt.onclick = function(){select(event)};
+			//Outputs a button with the date written on it.
 
 		cell[k].appendChild(bt);
 		row[c].appendChild(cell[k]);
@@ -78,15 +83,73 @@ function makeTable() {
 	document.getElementById('mytable').appendChild(tab);
 	}
 
-function changeColor() {
+function select(event) {
+
+	buttons=new Array();
+
+	for(c=0;c<a;c++) {
+	buttons[c]=document.getElementById('b' + c);
+	}
+	
+
+	if (event.ctrlKey) {
+	alert('ctrl');
+		if (isOneSel(buttons)) {
+		
+		a=this.cell - whichIsSel(buttons)
+
+		deselectAll();
+		
+
+	
+		} else {
+
+			deselectAll();
+			this.style.backgroundColor = 'red';
+			this.sel = true;
+		}
+
+	
+	} else {
+		deselectAll();
+		this.style.backgroundColor = 'red';
+		this.sel = true;
+	}
+
+	}
+
+
+function deselectAll() {
 	
 	for(c=0;c<a;c++) {
 	document.getElementById('b' + c).style.backgroundColor = 'transparent';
+	document.getElementById('b' + c).sel = false;
 	}
-	this.style.backgroundColor = 'red';
+	}
+
+function isOneSel(array) {
+
+	if (whichIsSel(array) == -1) {
+	return false;
+	} else {
+	return true;
+	}
+	}
+
+function whichIsSel(array) {
+
+	n=array.length;
 	
+	for(i=0;i<n;i++) {
+	if (array[i].sel) {
+	return i;
+	}
+	}
+	return -1;
 
 	}
+
+
 
 
 
