@@ -1,0 +1,20 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<script type="text/javascript" src="http://api.skyscanner.net/api.ashx?key=edilw015697856897893749376456547"></script>  
+<script type="text/javascript">  
+    skyscanner.load('snippets','2');  
+    function main(){  
+        var snippet=new skyscanner.snippets.SearchPanelControl();  
+        snippet.setCurrency('GBP');  
+        snippet.setShape('box300x250');  
+        snippet.setDeparture('uk');  
+        snippet.draw(document.getElementById('snippet_searchpanel'));  
+        }  
+    skyscanner.setOnLoadCallback(main);  
+</script>    
+</head>  
+<body>  
+    <div id="snippet_searchpanel" style="width: auto; height:auto;"></div>  
+</body>  
+</html>
