@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+		<head>
+		<style>
+		#skystyle1
+			{
+			text-align:center;
+			color:lightblue;
+			} 
+		</style>
+		</head>
+
+		<body>
+			<p id="skystyle">Hello World!</p>
+			<p>This paragraph is not affected by the style.</p>
+			</body>
+</html>
