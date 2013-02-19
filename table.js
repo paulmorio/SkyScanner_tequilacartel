@@ -96,8 +96,6 @@ function select() {
 
 		var b=whichIsSel(buttons);
 
-		deselectAll();
-
 		for (i=Math.min(b,this.id);i<=Math.max(this.id,b);i++) {
 		document.getElementById(i).style.backgroundColor = 'red';
 		document.getElementById(i).sel = true;
