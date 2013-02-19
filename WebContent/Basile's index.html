@@ -4,45 +4,52 @@
 
 <script>
 
-function generate_table() {
-	  // get the reference for the body
-	  var body = document.getElementsByTagName("body")[0];
-	  
-	  // creates a <table> element and a <tbody> element
-	  var tbl     = document.createElement("table");
-	  var tblBody = document.createElement("tbody");
-	  
-	  // creating all cells
-	  for (var j = 0; j < 5; j++) {
-	    // creates a table row
-	    var row = document.createElement("tr");
-	  
-	    for (var i = 0; i < 5; i++) {
-	      // Create a <td> element and a text node, make the text
-	      // node the contents of the <td>, and put the <td> at
-	      // the end of the table row
-	      var cell = document.createElement("td");
-	      var cellText = document.createTextNode("cell is row "+j+", column "+i);
-	      cell.appendChild(cellText);
-	      row.appendChild(cell);
-	    }
-	  
-	    // add the row to the end of the table body
-	    tblBody.appendChild(row);
-	  }
-	  
-	  // put the <tbody> in the <table>
-	  tbl.appendChild(tblBody);
-	  // appends <table> into <body>
-	  body.appendChild(tbl);
-	  // sets the border attribute of tbl to 2;
-	  tbl.setAttribute("border", "2");
-	}
+function showPosition(j,i) {
 	
+	document.getElementById('b3').innerHTML= 'j + i';
+}
 function changeColor() {
 	
+	if (document.getElementById('b2').style.backgroundColor == 'blue') {
 	document.getElementById('b2').style.backgroundColor = 'red';
+	} else {
+	document.getElementById('b2').style.backgroundColor = 'blue';
+	}
 }
+
+window.onload=function() {
+	makeTable();
+	}
+
+	function makeTable() {
+
+	row=new Array();
+	cell=new Array();
+
+	row_num=12; //edit this value to suit
+	cell_num=12; //edit this value to suit
+
+	tab=document.createElement('table');
+	tab.setAttribute('id','newtable');
+
+	tbo=document.createElement('tbody');
+
+	for(c=0;c<row_num;c++){
+	row[c]=document.createElement('tr');
+	
+	
+		for(k=0;k<cell_num;k++) {
+		cell[k]=document.createElement('td');
+		cont=document.createTextNode((c+1)*(k+1))
+		cell[k].appendChild(cont);
+		row[c].appendChild(cell[k]);
+		}
+	
+	tbo.appendChild(row[c]);
+	}
+	tab.appendChild(tbo);
+	document.getElementById('mytable').appendChild(tab);
+	}
 </script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -53,6 +60,6 @@ function changeColor() {
 <button style="background-color:transparent">Transparent background!</button>
 <button id="b2" style="background-color:blue" type="button" onclick="changeColor()">Is this Red?</button>
 
-
+<div id="mytable"></div>
 </body>
 </html>
