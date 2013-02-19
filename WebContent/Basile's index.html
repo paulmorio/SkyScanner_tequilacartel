@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<script>
+
+function generate_table() {
+	  // get the reference for the body
+	  var body = document.getElementsByTagName("body")[0];
+	  
+	  // creates a <table> element and a <tbody> element
+	  var tbl     = document.createElement("table");
+	  var tblBody = document.createElement("tbody");
+	  
+	  // creating all cells
+	  for (var j = 0; j < 5; j++) {
+	    // creates a table row
+	    var row = document.createElement("tr");
+	  
+	    for (var i = 0; i < 5; i++) {
+	      // Create a <td> element and a text node, make the text
+	      // node the contents of the <td>, and put the <td> at
+	      // the end of the table row
+	      var cell = document.createElement("td");
+	      var cellText = document.createTextNode("cell is row "+j+", column "+i);
+	      cell.appendChild(cellText);
+	      row.appendChild(cell);
+	    }
+	  
+	    // add the row to the end of the table body
+	    tblBody.appendChild(row);
+	  }
+	  
+	  // put the <tbody> in the <table>
+	  tbl.appendChild(tblBody);
+	  // appends <table> into <body>
+	  body.appendChild(tbl);
+	  // sets the border attribute of tbl to 2;
+	  tbl.setAttribute("border", "2");
+	}
+	
+function changeColor() {
+	
+	document.getElementById('b2').style.backgroundColor = 'red';
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Table</h1>
+<button style="background-color:transparent">Transparent background!</button>
+<button id="b2" style="background-color:blue" type="button" onclick="changeColor()">Is this Red?</button>
+
+
+</body>
+</html>
