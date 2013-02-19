@@ -1,4 +1,4 @@
-	var a = 600;
+	var a = 12;
 
 window.onload=function() {
 	makeTable();
