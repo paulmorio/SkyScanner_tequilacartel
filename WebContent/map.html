@@ -1,0 +1,35 @@
+<html>
+<head>
+  <title>OpenLayers Example</title>
+    <script src="http://openlayers.org/api/OpenLayers.js"></script>
+    </head>
+    <body>
+      <div style="width:100%; height:100%" id="map"></div>
+      <script defer="defer" type="text/javascript">
+      var map = new OpenLayers.Map({
+    div: "map",
+    layers: [
+        new OpenLayers.Layer.WMS(
+            "WMS", "http://vmap0.tiles.osgeo.org/wms/vmap0",
+            {layers: "basic"}
+        ),
+        new OpenLayers.Layer.Vector("KML", {
+            strategies: [new OpenLayers.Strategy.Fixed()],
+            protocol: new OpenLayers.Protocol.HTTP({
+                url: "worldMap.kml",
+                format: new OpenLayers.Format.KML({
+                    extractStyles: true, 
+                    extractAttributes: true,
+                    maxDepth: 2
+                })
+            })
+        },{layers: "basic"})
+    ],
+    center: new OpenLayers.LonLat(-112.169, 36.099),
+    zoom: 11
+});
+        map.zoomToMaxExtent();
+      </script>
+
+</body>
+</html>
