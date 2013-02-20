@@ -79,7 +79,7 @@ function makeTable() {
 	tbo.appendChild(row[c]);
 	}
 	tab.appendChild(tbo);
-	document.getElementById('mytable').appendChild(tab);
+	document.getElementById('dates').appendChild(tab);
 	}
 
 function select() {
