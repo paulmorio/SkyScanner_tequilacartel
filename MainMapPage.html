@@ -59,7 +59,7 @@
 		}
 		
 		div.skybg {
-		max-height: 600px;
+		height: 800px;
 		border: 10px inset skyblue;
 		outline-style: dotted;
 		outline-color: skyblue;
@@ -70,12 +70,15 @@
 		
 		div.skydate{
 		height: 600px;
+		min-height: 300px;
 		width:200px;
-		padding 10px;
-		border-right: 5px solid #353535;
-		background-color:goldenrod;
+		padding 1px;
+		border-right: 5px solid #skyblue;
+		background-color:skyblue;
+		color: black;
 		float:left;
 		text-align: center;
+		z-index:1
 		}
 		
 		table {border-collapse:collapse;}
@@ -87,15 +90,28 @@
 	</head>
 	<body onload="initialize()">
 		<h1> THE MAPINATOR </h1>
-		<div class="skybg" id="container">
 		
-			<div class="skydate" id="dates">
-			<iframe src="table.html" width="200" height="600"></iframe>
+		<div class="skybg" id="container">
+			<div class="skydate" id="leftcontainer" style = "float: left;">
+				<div class="skydate" id="dates">
+				<iframe src="table.html" width="200" height ="600"></iframe>
+				</div>
+				
+				<div id="dateform" style= "height:10px; width:10px; margin-top:10px; background-color: skyblue; text-align:left; padding:5px;">
+				<form name="input" action="undefined" method="get">
+				<fieldset>
+				<legend> Your Adventure Length </legend>
+				Minimum Days: <input type="text" name="minD" value=""><br>
+				Maximum Days: <input type="text" name="maxD" value=""><br>
+				<input type="submit" value="Submit">
+				</fieldset>
+				</form> 
+				</div>
 			</div>
 
-			<div id="map" style="background-color:skyblue;height:600px;">
-			</div>
-			
+				<div id="map" style="background-color:skyblue; height:800px;">
+				</div>
+				
 		</div>
 		
 		<div id="footer" style="background-color:#353535;clear:both;text-align:center; color: white">
