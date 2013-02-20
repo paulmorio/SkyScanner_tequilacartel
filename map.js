@@ -1,4 +1,6 @@
 function getColor(d) {
+	if (d == null)
+		return 'white';
     return d > 1000 ? '#800026' :
            d > 500  ? '#BD0026' :
            d > 200  ? '#E31A1C' :
@@ -12,7 +14,7 @@ var geojson;
 var tst = 10000;
 function style(feature) {
     return {
-        fillColor: getColor(tst),//minPrice(feature.id)),
+        fillColor: getColor(feature.minPrice),//minPrice(feature.id)),
         weight: 2,
         opacity: 1,
         color: 'white',
@@ -27,6 +29,8 @@ requestID++;
 	//console.log(selected);
 
 		geojson.eachLayer(function (layer) {
+			layer.feature.minPrice = null;
+			geojson.resetStyle(layer);
 			minPrice(layer);
 			//console.log(layer.feature.id);
     	
@@ -39,9 +43,6 @@ requestID++;
 }
 
 
-function answer(layer){
-	geojson.resetStyle(layer);
-}
 
 
 

@@ -18,7 +18,12 @@ function minPrice(layer){
 }
 
 function getRequest(json,layer){
+
 	
+	layer.feature.minPrice = json.Quotes[0].MinPrice; //treba apsolutni minimum
+	console.log(json.Quotes[0].MinPrice);
+	console.log(layer.feature.MinPrice);
+	geojson.resetStyle(layer);
 }
 
 function airPortLocation(code){
