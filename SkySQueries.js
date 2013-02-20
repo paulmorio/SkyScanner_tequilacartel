@@ -1,7 +1,7 @@
 // JavaScript Document
 // This file is for the queries to the SkyScanner API
 
-function loadPrices(ori,dest,outb,inb){
+function loadPrices(){
 				var xmlhttp;
 				if (window.XMLHttpRequest){//code for modern browsers
 					xmlhttp=new XMLHttpRequest();
@@ -11,15 +11,15 @@ function loadPrices(ori,dest,outb,inb){
 				xmlhttp.onreadystatechange=function(){
 				if(xmlhttp.readyState==4 && xmlhttp.status==200){
 					my_JSON_object = JSON.parse(xmlhttp.responseText);
-					document.getElementById("myDiv").innerHTML=my_JSON_object.Quotes[0].MinPrice;
-					console.log(my_JSON_object.Quotes[0].MinPrice);
+					//document.getElementById("myDiv").innerHTML=my_JSON_object.Quotes[0].MinPrice;
+					console.log(my_JSON_object);
 				}
 			}
 			var my_JSON_object = {};
 			var ori = "EDI";
 			var dest = "FR";
-			var outb ="2013-04-05";
-			var inb ="2013-04-09";
+			var outb ="2013-04";
+			var inb ="2013-05";
 			console.log(ori,dest,outb,inb);
 			xmlhttp.open("GET","http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/GB/GBP/en-GB/"+ori+"/"+dest+"/"+outb+"/"+inb+"?apiKey=edilw015697856897893749376456547",true);		
 			xmlhttp.send();
