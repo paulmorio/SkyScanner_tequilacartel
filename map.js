@@ -20,7 +20,9 @@ function style(feature) {
     };
 }
 
-
+function change(){
+	
+}
 
 
     var nyc_elevation;
@@ -63,9 +65,9 @@ info.onAdd = function (map) {
 //var info;
 // method that we will use to update the control based on feature properties passed
 info.update = function (props) {
-    this._div.innerHTML = //'<h4>US Population Density</h4>' +  (props ?
-        //'<b>' + props.name + '</b><br />' + props.density + ' people / mi<sup>2</sup>' :
-    ('Hover over a country');
+    this._div.innerHTML = '<h4>Go to:</h4>' +  (props ?
+        '<b>' + props.name + '</b><br />' 
+        : 'Hover over a country');
 };
 
 info.addTo(map);
