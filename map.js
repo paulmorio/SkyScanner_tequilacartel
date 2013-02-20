@@ -65,7 +65,7 @@ selected = new Array();
         //, mapboxUrl = 'http://tile.stamen.com/toner/{z}/{x}/{y}.jpg'
         , basemap = new L.TileLayer(mapboxUrl, {
           maxZoom: 20, 
-          attribution: "CartoDB Tutorials"
+          attribution: "TequilaCartel"
           });
       map.addLayer(basemap,true);
 	legend.addTo(map);

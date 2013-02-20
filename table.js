@@ -129,6 +129,7 @@ function select() {
 		this.style.backgroundColor = 'red';
 		this.sel = true;
 	}
+	
 	allTheSelected(buttons);
 
 	parent.change();
