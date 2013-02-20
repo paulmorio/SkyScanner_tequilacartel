@@ -4,23 +4,24 @@
 		<title>DOM Example</title>
 	</head>
     <body>
+    <p>The following tests variables</p>
     
-    <script>
-	var ori=document.getElementById("origin");
-	var dest=document.getElementsById("destination");
-	var outb=document.getElementsById("outbound");
-	var inb=document.getElementById("inbound");
-	document.write("<p>The Origin is: " + ori.innerHTML + "</p>");
-	document.write("<p>The Origin is: " + dest.innerHTML + "</p>");
-	document.write("<p>The Origin is: " + outb.innerHTML + "</p>");
-	document.write("<p>The Origin is: " + inb.innerHTML + "</p>");
-	</script>
-    
-	
     <p id="origin">LON</p>
     <p id="destination">FR</p>
     <p id="outbound">2013-05-28</p>
     <p id="inbound">2013-08-15</p>
+    
+    <script>
+	document.write("<p><b>TESTING</b>...</p>");
+	ori=document.getElementById("origin");	
+	dest=document.getElementById("destination");
+	outb=document.getElementById("outbound");
+	inb=document.getElementById("inbound");
+	document.write("<p>The Origin is: " + ori.innerHTML + "</p>");	
+	document.write("<p>The Destination is: " + dest.innerHTML + "</p>");	
+	document.write("<p>The Outbound date is: " + outb.innerHTML + "</p>");		
+	document.write("<p>The Inbound date is: " + inb.innerHTML + "</p>");
+	</script>
     
 	</body>
 </html>
