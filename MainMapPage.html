@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>		
 	<head>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+ <!--[if lte IE 8]>
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
+ <![endif]-->
+ <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+<script src="worldMap.js"></script>
+<script src="map.js"></script>
+
+<script src="table.js"></script>
 		<style type="text/css">
 		.skystyle1{
 			text-align:center;
@@ -51,7 +60,7 @@
 		
 		</style> 
 	</head>
-	<body>
+	<body onload="initialize()">
 		<h1> THE MAPINATOR </h1>
 		<div class="skybg" id="container">
 		
