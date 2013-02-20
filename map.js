@@ -11,7 +11,7 @@ function getColor(d) {
 var geojson;
 function style(feature) {
     return {
-        fillColor: getColor(feature.properties.density),
+        fillColor: getColor(minPrice(feature.id)),
         weight: 2,
         opacity: 1,
         color: 'white',
@@ -21,9 +21,13 @@ function style(feature) {
 }
 
 function change(){
-	
+	//for(x in selected){
+		
+	//}
 }
-
+function minPrice(dest){
+console.log(dest);
+}
 
     var nyc_elevation;
     var info = L.control();
@@ -44,7 +48,7 @@ function initialize(){
           attribution: "CartoDB Tutorials"
           });
       map.addLayer(basemap,true);
-
+	legend.addTo(map);
       
 
 geojson = L.geoJson(countries_data, {
@@ -68,6 +72,7 @@ info.update = function (props) {
     this._div.innerHTML = '<h4>Go to:</h4>' +  (props ?
         '<b>' + props.name + '</b><br />' 
         : 'Hover over a country');
+        
 };
 
 info.addTo(map);
@@ -109,4 +114,25 @@ function onEachFeature(feature, layer) {
         click: zoomToFeature
     });
 }
+
+
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+        labels = [];
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+
+    return div;
+};
+
+
 

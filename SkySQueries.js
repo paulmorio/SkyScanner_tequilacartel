@@ -1,29 +1,26 @@
 // JavaScript Document
 // This file is for the queries to the SkyScanner API
 
-function loadPrices(){
-				var xmlhttp;
-				if (window.XMLHttpRequest){//code for modern browsers
-					xmlhttp=new XMLHttpRequest();
-				}else{// code for oldies IE6, IE5
-  					xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  				}		
-				xmlhttp.onreadystatechange=function(){
-				if(xmlhttp.readyState==4 && xmlhttp.status==200){
-					my_JSON_object = JSON.parse(xmlhttp.responseText);
-					//document.getElementById("myDiv").innerHTML=my_JSON_object.Quotes[0].MinPrice;
-					console.log(my_JSON_object);
-				}
+function loadPrices(dest,outb,inb){
+			var xmlhttp;
+			if (window.XMLHttpRequest){//code for modern browsers
+				xmlhttp=new XMLHttpRequest();
+			}else{// code for oldies IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}		
+			xmlhttp.onreadystatechange=function(){
+			if(xmlhttp.readyState==4 && xmlhttp.status==200){
+				my_JSON_object = JSON.parse(xmlhttp.responseText);
+				//document.getElementById("myDiv").innerHTML=my_JSON_object.Quotes[0].MinPrice;
+				console.log(my_JSON_object);
 			}
-			var my_JSON_object = {};
-			var ori = "EDI";
-			var dest = "FR";
-			var outb ="2013-04";
-			var inb ="2013-05";
-			console.log(ori,dest,outb,inb);
-			xmlhttp.open("GET","http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/GB/GBP/en-GB/"+ori+"/"+dest+"/"+outb+"/"+inb+"?apiKey=edilw015697856897893749376456547",true);		
-			xmlhttp.send();
-			}
+		}
+		var my_JSON_object = {};
+		var ori = "EDI";
+		console.log(ori,dest,outb,inb);
+		xmlhttp.open("GET","http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/GB/GBP/en-GB/"+ori+"/"+dest+"/"+outb+"/"+inb+"?apiKey=edilw015697856897893749376456547",true);		
+		xmlhttp.send();
+}
 
 /* URL for "Browse Cache ROUTES Service API"
 http://partners.api.skyscanner.net/apiservices/browseroutes/v1.0/{country}/{currency}/{locale}/{originPlace}/{destinationPlace}/{outboundPartialDate}/{inboundPartialDate}?apiKey={apiKey}
