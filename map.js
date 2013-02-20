@@ -25,6 +25,7 @@ function style(feature) {
 
     var nyc_elevation;
     var info = L.control();
+    var map;
 function initialize(){
 	//makeTable();
 	//loadPrices();
@@ -33,7 +34,7 @@ function initialize(){
       var zoom = 4; 
 
       // is our Leaflet map object
-	var map = new L.Map('map').setView(position, zoom)
+	map = new L.Map('map').setView(position, zoom)
         , mapboxUrl = 'http://{s}.tiles.mapbox.com/v3/cartodb.map-1nh578vv/{z}/{x}/{y}.png'
         //, mapboxUrl = 'http://tile.stamen.com/toner/{z}/{x}/{y}.jpg'
         , basemap = new L.TileLayer(mapboxUrl, {
@@ -43,7 +44,7 @@ function initialize(){
       map.addLayer(basemap,true);
 
       
-console.log(countries_data);
+
 geojson = L.geoJson(countries_data, {
     style: style,
     onEachFeature: onEachFeature
@@ -71,12 +72,11 @@ info.addTo(map);
 
  }
 
-var layer;
 
 
 
 function highlightFeature(e) {
-    layer = e.target;
+    var layer = e.target;
 
     layer.setStyle({
         weight: 5,
@@ -94,7 +94,7 @@ info.update(layer.feature.properties);
 
 function resetHighlight(e) {
     geojson.resetStyle(e.target);
-info.update(layer.feature.properties);
+info.update();
 }
 function zoomToFeature(e) {
     map.fitBounds(e.target.getBounds());
