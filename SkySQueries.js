@@ -2,42 +2,101 @@
 // This file is for the queries to the SkyScanner API
 var selected;
 function nextDay(dat) {
-	dat.setDate(dat.getDate() + 1);
+	return dat.setDate(dat.getDate() + 1);
 	}
-function minPrice(layer, dest){
+function minPrice(layer){
 	//minStay = documet.getElementById("minD").text;
 	//maxStay = documet.getElementById("maxD").text;
 	//loadPrices(dest,inDates[0],nextDayinDates[0]
 	//alert(selected);
-	loadPrices(dest,selected[0],nextDay(selected[0]));
+	layer.quotes = new Array();
+	var dest = layer.feature.id;
+	var nDay = new Date(selected[0]);
+	nextDay(nDay);
+	nextDay(nDay); 
+	loadPrices(dest,selected[0],nDay,requestID,layer);
 }
 
+function getRequest(json,layer){
+	
+}
 
-function loadPrices(dest,outb,inb){
-			//outb = 
-			var xmlhttp;
+function airPortLocation(code){
+var xmlhttp;
+			
 			if (window.XMLHttpRequest){//code for modern browsers
 				xmlhttp=new XMLHttpRequest();
 			}else{// code for oldies IE6, IE5
 				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 			}		
+			xmlhttp.requestID = requestID;
 			xmlhttp.onreadystatechange=function(){
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){
-				my_JSON_object = JSON.parse(xmlhttp.responseText);
-				//document.getElementById("myDiv").innerHTML=my_JSON_object.Quotes[0].MinPrice;
-				//console.log(my_JSON_object);
-				//console.
+				console.log(xmlhttp.responseText);
 			}
 			
 		}
 		var my_JSON_object = {};
 		var ori = "EDI";
-		console.log(ori,dest,outb,inb);
-		xmlhttp.open("GET","http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/GB/GBP/en-GB/"+ori+"/"+dest+"/"+outb+"/"+inb+"?apiKey=edilw015697856897893749376456547",true);		
+		xmlhttp.open("GET","http://maps.google.com/maps/geo?q="+code+"&output=csv&sensor=false",true);		
 		xmlhttp.send();
-		return
+	
 }
 
+function loadPrices(dest,outb,inb,rID,layer){
+			//outb = 
+			//alert (outb);
+			//alert (inb);
+			var xmlhttp;
+			
+			if (window.XMLHttpRequest){//code for modern browsers
+				xmlhttp=new XMLHttpRequest();
+			}else{// code for oldies IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}		
+			//xmlhttp.requestID = requestID;
+			xmlhttp.onreadystatechange=function(){
+			if(xmlhttp.readyState==4 && xmlhttp.status==200){
+				my_JSON_object = JSON.parse(xmlhttp.responseText);
+				//document.getElementById("myDiv").innerHTML=my_JSON_object.Quotes[0].MinPrice;
+				//alert("yee");//console.log(my_JSON_object);
+				//	console.
+				
+				//if(my_JSON_object.Quotes.length != 0)
+				//console.log(my_JSON_object);
+				//console.log(rID);
+				if(requestID == rID){
+					getRequest(my_JSON_object,layer)
+				}
+			}
+			
+		}
+		var my_JSON_object = {};
+		var ori = "EDI";
+		xmlhttp.open("GET","http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/GB/GBP/en-GB/"+ori+"/"+dest+"/"+dateFormat(outb)+"/"+dateFormat(inb)+"?apiKey=edilw015697856897893749376456547",true);		
+		xmlhttp.send();
+		//return
+}
+
+
+function dateFormat(x) {
+
+	if (x.getMonth()%10 == x.getMonth()) {
+		var month = "0" + (x.getMonth() + 1);
+	} else {
+		var month = x.getMonth() + 1;
+	}
+
+	if (x.getDate()%10 == x.getDate()) {
+		var date = "0" + x.getDate();
+	} else {
+		var date = x.getDate();
+	}
+
+	return x.getFullYear() + "-" + month + "-" + date;
+
+
+	}
 /* URL for "Browse Cache ROUTES Service API"
 http://partners.api.skyscanner.net/apiservices/browseroutes/v1.0/{country}/{currency}/{locale}/{originPlace}/{destinationPlace}/{outboundPartialDate}/{inboundPartialDate}?apiKey={apiKey}
 The query types are:

@@ -20,13 +20,14 @@ function style(feature) {
         fillOpacity: 0.7
     };
 }
-
+var requestID = 0;
 function change(){
+requestID++;
 	//for(x in selected){
 	//console.log(selected);
 
 		geojson.eachLayer(function (layer) {
-			minPrice(layer, layer.feature.id);
+			minPrice(layer);
 			//console.log(layer.feature.id);
     	
 });

@@ -180,24 +180,7 @@ function whichIsSel(array) {
 
 	}
 
-function dateFormat(x) {
 
-	if (x.getMonth()%10 == x.getMonth()) {
-		var month = "0" + (x.getMonth() + 1);
-	} else {
-		var month = x.getMonth() + 1;
-	}
-
-	if (x.getDate()%10 == x.getDate()) {
-		var date = "0" + x.getDate();
-	} else {
-		var date = x.getDate();
-	}
-
-	return x.getFullYear() + "-" + month + "-" + date;
-
-
-	}
 
 
 
