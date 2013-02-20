@@ -1,7 +1,20 @@
 // JavaScript Document
 // This file is for the queries to the SkyScanner API
+var selected;
+function nextDay(dat) {
+	dat.setDate(dat.getDate() + 1);
+	}
+function minPrice(layer, dest){
+	//minStay = documet.getElementById("minD").text;
+	//maxStay = documet.getElementById("maxD").text;
+	//loadPrices(dest,inDates[0],nextDayinDates[0]
+	console.log(selected[0]);
+	
+}
+
 
 function loadPrices(dest,outb,inb){
+			//outb = 
 			var xmlhttp;
 			if (window.XMLHttpRequest){//code for modern browsers
 				xmlhttp=new XMLHttpRequest();
@@ -20,6 +33,7 @@ function loadPrices(dest,outb,inb){
 		console.log(ori,dest,outb,inb);
 		xmlhttp.open("GET","http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/GB/GBP/en-GB/"+ori+"/"+dest+"/"+outb+"/"+inb+"?apiKey=edilw015697856897893749376456547",true);		
 		xmlhttp.send();
+		return
 }
 
 /* URL for "Browse Cache ROUTES Service API"

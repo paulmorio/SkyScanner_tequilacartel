@@ -23,9 +23,11 @@ function style(feature) {
 
 function change(){
 	//for(x in selected){
-		tst = 100;
+	console.log(selected);
+
 		geojson.eachLayer(function (layer) {
-			
+			minPrice(layer, layer.feature.id,selected);
+			//console.log(layer.feature.id);
     	
 });
 //onEachFeature: function (feature, layer) {
@@ -34,13 +36,7 @@ function change(){
 		//resetHighlight();
 	//}
 }
-function minPrice(dest){
-//for(x in geojson.layers())
-	//console.log(geojson.style);
-	//console.log(countries_data);
-	return 100;
 
-}
 
 function answer(layer){
 	geojson.resetStyle(layer);
@@ -57,7 +53,7 @@ function answer(layer){
 function initialize(){
 	//makeTable();
 	//loadPrices();
-
+selected = new Array();
       var position = new L.LatLng(47.723713744687274, 20.3);
       var zoom = 4; 
 

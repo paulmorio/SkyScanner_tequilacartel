@@ -1,12 +1,10 @@
 	var a = 200;
-	var selected;
+
 
 
 window.onload = function(){makeTable();}
 
-function nextDay(dat) {
-	dat.setDate(dat.getDate() + 1);
-	}
+nextDay = parent.nextDay;
 
 function whatDay(day) {
 	
@@ -132,16 +130,18 @@ function select() {
 		this.sel = true;
 	}
 	allTheSelected(buttons);
+
 	parent.change();
+	
 	}
 
 function allTheSelected(b){
-	selected = new Array();
+	parent.selected = new Array();
 	
 	for(i=0;i<a;i++) {
 	
 		if(b[i].sel == true){
-		selected.push(b[i].date);
+		parent.selected.push(b[i].date);
 		}
 	}
 	}
