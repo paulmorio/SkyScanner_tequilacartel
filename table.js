@@ -108,6 +108,12 @@ function select() {
 		}
 
 	
+	} else if (event.ctrlKey) {
+
+		this.style.backgroundColor = 'red';
+		this.sel = true;
+
+
 	} else {
 		deselectAll();
 		this.style.backgroundColor = 'red';
