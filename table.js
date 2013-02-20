@@ -1,4 +1,4 @@
-	var a = 15;
+	var a = 200;
 
 window.onload = function(){makeTable();}
 
