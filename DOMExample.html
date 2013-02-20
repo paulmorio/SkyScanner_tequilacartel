@@ -6,14 +6,25 @@
     <body>
     <p>The following tests variables</p>
     
-    <p id="origin">LON</p>
-    <p id="destination">FR</p>
-    <p id="outbound">2013-05-28</p>
-    <p id="inbound">2013-08-15</p>
+    
+    <h1 onclick="this.innerHTML='Ooops!'";>Click on this text!</h1>
+    <button id="mybutton">set origin</button>
+    
+    <p id="origin" visibility="hidden">LON</p>
+    <p id="destination" visibility='hidden'>FR</p>
+    <p id="outbound" visibility='hidden'>2013-05-28</p>
+    <p id="inbound" visibility='hidden'>2013-08-15</p>
     
     <script>
+	function setOrigin(){
+		ori=document.getElementById("origin");
+		document.getElementById("origin").visibility='visible';
+		document.write("<p>The Origin is: " + ori.innerHTML + "</p>");
+	}
+	document.getElementById("mybutton").onclick=function(){setOrigin()};
 	document.write("<p><b>TESTING</b>...</p>");
-	ori=document.getElementById("origin");	
+	document.write("<p>The Origin is: " + ori.innerHTML + "</p>");
+//	ori=document.getElementById("origin");	
 	dest=document.getElementById("destination");
 	outb=document.getElementById("outbound");
 	inb=document.getElementById("inbound");
