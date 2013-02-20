@@ -9,6 +9,13 @@
 <script src="worldMap.js"></script>
 <script src="SkySQueries.js"></script>
 <script src="map.js"></script>
+  <script type="text/javascript">
+        function OnSliderChanged (slider) {
+            var sliderValue = document.getElementById ("bRangeValue");
+            sliderValue.innerHTML = slider.value;
+        }
+
+    </script>
 
 
 		<style type="text/css">
@@ -85,6 +92,11 @@
 		table {border :10px solid skyblue;}
 		th {border:10px solid skyblue; background-color: skyblue; color: white}
 		td {border:1px solid #353535; background-color: white; color: skyblue; text-align:center; padding: 10px;}
+
+        .sliderValue {
+            padding: 3px;
+            background-color: #d0d0f0;
+            border: 1px solid #808080;
 		
 		</style> 
 	</head>
@@ -104,7 +116,7 @@
 				<legend> Your Adventure Length </legend>
 				Minimum Days: <input type="text" id="minD" value=""><br>
 				Maximum Days: <input type="text" id="maxD" value=""><br>
-				Budget (GBP): <input type="range" id="bRange" value="100" min="0" max="5000" step="30" /> <br>
+				Budget (GBP): <div id="bRangeValue" class="sliderValue"></div> <br> <input type="range" id="bRange" value="100" min="0" max="1000" step="25" onchange="OnSliderChanged (this)"/><br>
 				<input type="submit" value="Submit">
 				</fieldset>
 				</form> 
