@@ -108,7 +108,7 @@ function select() {
 		}
 
 	
-	} else if (event.ctrlKey) {
+	} else if (event.ctrlKey || event.altKey) {
 
 		this.style.backgroundColor = 'red';
 		this.sel = true;
