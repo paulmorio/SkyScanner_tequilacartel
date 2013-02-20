@@ -1,6 +1,12 @@
 	var a = 200;
+	var selected;
+
 
 window.onload = function(){makeTable();}
+
+function nextDay(dat) {
+	dat.setDate(dat.getDate() + 1);
+	}
 
 function whatDay(day) {
 	
@@ -37,7 +43,7 @@ function makeTable() {
 	cell=new Array();
 	date=new Array();
 	dateName=new Array();
-
+	
 	var dat = new Date();
 
 	row_num=a;
@@ -50,9 +56,9 @@ function makeTable() {
 
 	for(c=0;c<row_num;c++){
 	row[c]=document.createElement('tr');
-	date[c]=dat;
+	date[c]=new Date(dat);
 	dateName[c]= whatDay(dat.getDay()) + "\n" + dat.getDate() + "/" + (dat.getMonth()+1) + "/" + dat.getFullYear();
-	dat.setDate(dat.getDate() + 1);
+	nextDay(dat);
 		//sets the dates to each element of the Array date[].
 	
 	
@@ -67,6 +73,7 @@ function makeTable() {
 		bt.value = dateName[c];
 		bt.style.width = 150;
 		bt.sel = false;
+		bt.date = date[c];
 		bt.onclick = select;
 			//Outputs a button with the date written on it.
 
@@ -124,9 +131,20 @@ function select() {
 		this.style.backgroundColor = 'red';
 		this.sel = true;
 	}
-
+	allTheSelected(buttons);
+	change();
 	}
 
+function allTheSelected(b){
+	selected = new Array();
+	
+	for(i=0;i<a;i++) {
+	
+		if(b[i].sel == true){
+		selected.push(b[i].date);
+		}
+	}
+	}
 
 function deselectAll() {
 	
@@ -162,6 +180,24 @@ function whichIsSel(array) {
 
 	}
 
+function dateFormat(x) {
+
+	if (x.getMonth()%10 == x.getMonth()) {
+		var month = "0" + (x.getMonth() + 1);
+	} else {
+		var month = x.getMonth() + 1;
+	}
+
+	if (x.getDate()%10 == x.getDate()) {
+		var date = "0" + x.getDate();
+	} else {
+		var date = x.getDate();
+	}
+
+	return x.getFullYear() + "-" + month + "-" + date;
+
+
+	}
 
 
 
