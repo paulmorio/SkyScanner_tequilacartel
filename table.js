@@ -110,8 +110,13 @@ function select() {
 	
 	} else if (event.ctrlKey || event.altKey) {
 
-		this.style.backgroundColor = 'red';
-		this.sel = true;
+		if (this.sel == false) {
+			this.style.backgroundColor = 'red';
+			this.sel = true;
+		} else {
+			this.style.backgroundColor = 'transparent';
+			this.sel = false;
+		}
 
 
 	} else {
