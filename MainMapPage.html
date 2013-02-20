@@ -72,20 +72,21 @@
 		outline-style: dotted;
 		outline-color: skyblue;
 		margin-top:50px;
-		margin-bottom:25px;
+		margin-bottom:50px;
 		background-color:white;
 		}
 		
 		div.skydate{
-		height:800px;
+		height: 600px;
+		min-height: 300px;
 		width:200px;
 		padding 1px;
-		margin-bottom: 10px;
 		border-right: 5px solid #skyblue;
 		background-color:skyblue;
 		color: black;
 		float:left;
 		text-align: center;
+		z-index:1
 		}
 		
 		table {border-collapse:collapse;}
@@ -104,8 +105,9 @@
 		<h1> THE MAPINATOR </h1>
 		
 		<div class="skybg" id="container">
+			<div class="skydate" id="leftcontainer" style = "float: left;">
 				<div class="skydate" id="dates">
-				<iframe src="table.html" width="200" height ="800"></iframe>
+				<iframe src="table.html" width="200" height ="600"></iframe>
 				</div>
 				
 				<div id="dateform" style= "height:10px; width:10px; margin-top:10px; background-color: skyblue; 
@@ -124,23 +126,10 @@
 
 				<div id="map" style="background-color:skyblue; height:800px;">
 				</div>
-
+				
 		</div>
 		
-			<div id="dateform" style= "margin-top:10px; margin-bottom:10px; height: 50px; background-color: skyblue; text-align:center; padding:5px;">
-			<form name="input" action="undefined" method="get">
-			<fieldset>
-			<legend> Your Travel Length </legend>
-			Minimum Days: <input type="text" id="minD" value=""><br>
-			Maximum Days: <input type="text" id="maxD" value=""><br>
-			Budget (GBP): <input type="range" id="bRange" value="100" min="0" max="5000" step="30" /> <br>
-			<input type="submit" value="Submit">
-			</fieldset>
-			</form> 
-			</div>
-				
-		
-		<div id="footer" style="background-color:#353535; margin: 5px; clear:both;text-align:center; color: white">
+		<div id="footer" style="background-color:#353535;clear:both;text-align:center; color: white">
 		EDINBURGH UNIVERSITY ILW OPENDATA HACK 2013<br> TEQUILACARTEL<sup>Yep that's our name.</sup> </div>
 
 	</body>
