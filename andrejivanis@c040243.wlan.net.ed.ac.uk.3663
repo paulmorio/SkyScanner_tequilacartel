@@ -24,8 +24,7 @@ function style(feature) {
 
 
     var nyc_elevation;
-    var info = L.control();
-function initialize(){
+    function initialize(){
 	//makeTable();
 	//loadPrices();
 
@@ -51,7 +50,7 @@ geojson = L.geoJson(countries_data, {
 
 
 
-
+var info = L.control();
 
 info.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
@@ -59,7 +58,6 @@ info.onAdd = function (map) {
     return this._div;
 };
 
-//var info;
 // method that we will use to update the control based on feature properties passed
 info.update = function (props) {
     this._div.innerHTML = //'<h4>US Population Density</h4>' +  (props ?
@@ -69,14 +67,14 @@ info.update = function (props) {
 
 info.addTo(map);
 
- }
+    }
 
-var layer;
+
 
 
 
 function highlightFeature(e) {
-    layer = e.target;
+    var layer = e.target;
 
     layer.setStyle({
         weight: 5,
@@ -91,7 +89,6 @@ function highlightFeature(e) {
 
 info.update(layer.feature.properties);
 }
-
 function resetHighlight(e) {
     geojson.resetStyle(e.target);
 info.update(layer.feature.properties);
