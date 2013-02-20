@@ -24,6 +24,14 @@ function style(feature) {
 function change(){
 	//for(x in selected){
 		tst = 100;
+		geojson.eachLayer(function (layer) {
+			
+    	
+});
+//onEachFeature: function (feature, layer) {
+  //      resetHighlight(feature);
+    //}
+		//resetHighlight();
 	//}
 }
 function minPrice(dest){
@@ -32,6 +40,10 @@ function minPrice(dest){
 	//console.log(countries_data);
 	return 100;
 
+}
+
+function answer(layer){
+	geojson.resetStyle(layer);
 }
 
 
