@@ -1,7 +1,4 @@
-h1 {background-color: red;}
-
-td
-{
+td {
 appearance:button;
 -moz-appearance:button; /* Firefox */
 -webkit-appearance:button; /* Safari and Chrome */
