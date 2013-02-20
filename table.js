@@ -1,5 +1,6 @@
 	var a = 15;
 
+window.onload = function(){makeTable();}
 
 function whatDay(day) {
 	
@@ -76,7 +77,7 @@ function makeTable() {
 	tbo.appendChild(row[c]);
 	}
 	tab.appendChild(tbo);
-    document.getElementById('dates').appendChild(tab);
+    document.getElementById('mytable').appendChild(tab);
 	}
 
 function select() {
