@@ -65,7 +65,7 @@ function makeTable() {
 		bt.id = c;
 		bt.style.backgroundColor = 'transparent';
 		bt.value = dateName[c];
-		bt.style.width = 100;
+		bt.style.width = 150;
 		bt.sel = false;
 		bt.onclick = select;
 			//Outputs a button with the date written on it.
