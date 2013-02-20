@@ -132,7 +132,7 @@ function select() {
 		this.sel = true;
 	}
 	allTheSelected(buttons);
-	change();
+	parent.change();
 	}
 
 function allTheSelected(b){
