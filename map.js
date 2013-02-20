@@ -22,7 +22,7 @@ function style(feature) {
 
     var nyc_elevation;
     function initialize(){
-
+	makeTable();
       var position = new L.LatLng(47.723713744687274, 20.3);
       var zoom = 4; 
 
