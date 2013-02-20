@@ -22,15 +22,12 @@ function style(feature) {
 
     var nyc_elevation;
     function initialize(){
-      console.log('map running');
-      // starting latitude and longitude for our map
-      var position = new L.LatLng(40.723713744687274, -93.97566795349121);
-      
-      // starting zoom
+
+      var position = new L.LatLng(47.723713744687274, 20.3);
       var zoom = 4; 
 
       // is our Leaflet map object
-      var map = new L.Map('map').setView(position, zoom)
+	var map = new L.Map('map').setView(position, zoom)
         , mapboxUrl = 'http://{s}.tiles.mapbox.com/v3/cartodb.map-1nh578vv/{z}/{x}/{y}.png'
         //, mapboxUrl = 'http://tile.stamen.com/toner/{z}/{x}/{y}.jpg'
         , basemap = new L.TileLayer(mapboxUrl, {
