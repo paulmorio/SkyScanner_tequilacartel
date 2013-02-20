@@ -9,9 +9,10 @@ function getColor(d) {
                       '#FFEDA0';
 }
 var geojson;
+var tst = 10000;
 function style(feature) {
     return {
-        fillColor: getColor(minPrice(feature.id)),
+        fillColor: getColor(tst),//minPrice(feature.id)),
         weight: 2,
         opacity: 1,
         color: 'white',
@@ -22,16 +23,25 @@ function style(feature) {
 
 function change(){
 	//for(x in selected){
-		
+		tst = 100;
 	//}
 }
 function minPrice(dest){
-console.log(dest);
+//for(x in geojson.layers())
+	//console.log(geojson.style);
+	//console.log(countries_data);
+	return 100;
+
 }
+
+
+
 
     var nyc_elevation;
     var info = L.control();
     var map;
+    
+    
 function initialize(){
 	//makeTable();
 	//loadPrices();
