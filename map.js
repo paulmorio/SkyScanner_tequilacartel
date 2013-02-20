@@ -23,10 +23,10 @@ function style(feature) {
 
 function change(){
 	//for(x in selected){
-	console.log(selected);
+	//console.log(selected);
 
 		geojson.eachLayer(function (layer) {
-			minPrice(layer, layer.feature.id,selected);
+			minPrice(layer, layer.feature.id);
 			//console.log(layer.feature.id);
     	
 });

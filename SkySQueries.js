@@ -8,8 +8,8 @@ function minPrice(layer, dest){
 	//minStay = documet.getElementById("minD").text;
 	//maxStay = documet.getElementById("maxD").text;
 	//loadPrices(dest,inDates[0],nextDayinDates[0]
-	console.log(selected[0]);
-	
+	//alert(selected);
+	loadPrices(dest,selected[0],nextDay(selected[0]));
 }
 
 
@@ -25,8 +25,10 @@ function loadPrices(dest,outb,inb){
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){
 				my_JSON_object = JSON.parse(xmlhttp.responseText);
 				//document.getElementById("myDiv").innerHTML=my_JSON_object.Quotes[0].MinPrice;
-				console.log(my_JSON_object);
+				//console.log(my_JSON_object);
+				//console.
 			}
+			
 		}
 		var my_JSON_object = {};
 		var ori = "EDI";
