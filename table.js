@@ -1,8 +1,5 @@
 	var a = 15;
 
-window.onload=function() {
-	makeTable();
-	}
 
 function whatDay(day) {
 	
