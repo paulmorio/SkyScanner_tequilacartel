@@ -83,6 +83,12 @@ var xmlhttp;
 	
 }
 
+function addCountry(x)
+{
+	console.log(x);
+	console.log(x[0].ci);
+}
+
 function getCountry(city){
 var xmlhttp;
 			
@@ -94,12 +100,13 @@ var xmlhttp;
 			}		
 			xmlhttp.requestID = requestID;
 			xmlhttp.onreadystatechange=function(){
-			if(xmlhttp.readyState==4 && xmlhttp.status==200){
+			console.log(xmlhttp.readyState);
+			if(xmlhttp.readyState==4 && xmlhttp.status==200){//xmlhttp.readyState==4 &&
 				
 				var x = eval(xmlhttp.responseText);
-				
+				addCountry(x);
 				//my_JSON_object = JSON.parse(xmlhttp.responseText);
-				console.log(x);
+				
 			}
 			
 		}
@@ -109,8 +116,37 @@ var xmlhttp;
 	
 }
 
-http://api.skyscanner.net/as.ashx?&t=un&l=en&d=1&c=GBP&callback=skyscanner.loader.callbacks.requestid1
+function chOri(){
+		var xmlhttp;
+			
+		console.log("getting");
+			if (window.XMLHttpRequest){//code for modern browsers
+				xmlhttp=new XMLHttpRequest();
+			}else{// code for oldies IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}		
+			xmlhttp.requestID = requestID;
+			xmlhttp.onreadystatechange=function(){
+			console.log(xmlhttp.readyState);
+			if(xmlhttp.readyState==4 && xmlhttp.status==200){//xmlhttp.readyState==4 &&
+				
+				var x = eval(xmlhttp.responseText);
+				
+				//my_JSON_object = JSON.parse(xmlhttp.responseText);
+				ori = x[0].i;
+				console.log(ori);
+			}
+			
+		}
+		var my_JSON_object = {};
+		city = document.getElementById("origin").value;
+		xmlhttp.open("GET","http://api.skyscanner.net/as.ashx?&t="+city+"&l=en&d=1&c=GBP",true);		
+		xmlhttp.send();
+	
+}
 
+http://api.skyscanner.net/as.ashx?&t=un&l=en&d=1&c=GBP&callback=skyscanner.loader.callbacks.requestid1
+var ori;
 function loadPrices(outb,inb,rID){
 			var xmlhttp;
 			//console.log("sendR");
@@ -130,7 +166,7 @@ function loadPrices(outb,inb,rID){
 			
 		}
 		var my_JSON_object = {};
-		var ori = "EDI";
+
 		xmlhttp.open("GET","http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/GB/GBP/en-GB/"+ori+"/anywhere/"+dateFormat(outb)+"/"+dateFormat(inb)+"?apiKey=edilw015697856897893749376456547",true);		
 		xmlhttp.send();
 }
