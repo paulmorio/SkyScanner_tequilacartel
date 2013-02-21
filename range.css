@@ -45,10 +45,10 @@
     padding:0 2px;
     background:transparent;
     font-size:22px;
-    color:#fff;
+    color:#000;
     width:47px;
     text-align:left;
-    text-shadow:#000 0 0 1px;
+    text-shadow:#fff 0 0 2px;
 }
 
 .range:focus {
