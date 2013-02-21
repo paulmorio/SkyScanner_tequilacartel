@@ -24,36 +24,25 @@ function style(feature) {
 }
 var requestID = 0;
 function change(){
-countryPrices = new Object();
+			geojson.eachLayer(function (layer) {
+			layer.feature.properties.minPrice = null;
+			geojson.resetStyle(layer);
+	});
+
+minCity = new Object();
 	minCountry = new Object();
 requestID++;
-	//for(x in selected){
-	//chOri();
-	//console.log(selected);
-	//getCountry("Edinburgh");
 	minPrice();
 		
-
-
-//onEachFeature: function (feature, layer) {
-  //      resetHighlight(feature);
-    //}
-		//resetHighlight();
-	//}
 }
 
-function updat(){
-	geojson.eachLayer(function (layer) {
+function updat(cCode){
+	layer = layerHash[cCode];
+
 			layer.feature.properties.minPrice = null;
-			//countries.properties.id;
-			//if(layer
-			//if(layer.feature != null)
 				layer.feature.properties.minPrice = minCountry[layer.feature.id];
 			geojson.resetStyle(layer);
-			
-			//console.log(layer.feature.id);
-    	
-	});
+
 }
 
 
@@ -64,12 +53,15 @@ function updat(){
     var info = L.control();
     var map;
     
-    var countryPrices;
+    var minCity;
+    var layerHash;
 function initialize(){
 	//makeTable();
 	//loadPrices();
-	countryPrices = new Object();
+	minCity = new Object();
 	minCountry = new Object();
+	cCodes = new Object();
+	layerHash = new Object();
 selected = new Array();
       var position = new L.LatLng(47.723713744687274, 20.3);
       var zoom = 4; 
@@ -112,6 +104,12 @@ info.update = function (props) {
 };
 
 info.addTo(map);
+
+
+geojson.eachLayer(function (layer) {
+			layerHash[layer.feature.id] = layer;
+    	
+	});
 
  }
 

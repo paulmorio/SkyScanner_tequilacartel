@@ -36,65 +36,89 @@ function minPrice(){
 	}
 }
 
+
+//answer from anywhere request
 function getRequest(json){
 
 	if(json.Quotes == null){
 		return;
 	}
-	var idToCountry = new Object();
+	var idToCity = new Object();
 	
 	for(i =0;i<json.Places.length;i++){
 		var p = json.Places[i];
-		idToCountry[p.PlaceId] = p.Name;
+		idToCity[p.PlaceId] = p.Name;
 		//console.log(idToCountry[p.PlaceId]);
 	}
 	
 	for(i =0;i<json.Quotes.length;i++){
 		q = json.Quotes[i];
-		to = idToCountry[q.OutboundLeg.DestinationId];
-		//alert("works");
-		//getCountry(to);
-		if(countryPrices[to] == null){
-			countryPrices[to] = q.MinPrice;
+		var city = idToCity[q.OutboundLeg.DestinationId];
+		city = city.split('/')[0];
+		if(minCity[city] == null){
+			minCity[city] = q.MinPrice;
 			
-			}else if(countryPrices[to]>q.MinPrice){
-				countryPrices[to] = q.MinPrice;
+			}else if(minCity[city]>q.MinPrice){
+				minCity[city] = q.MinPrice;
 			}
-		getCountry(to);
-		console.log(to);
-		console.log(countryPrices[to]);
+		if(cCodes[city]== null){
+			getCities(city);
+			}else{
+			addCountry(city,cCodes[city]);
+			console.log("reuse");
+			}
+		//console.log(city);
+		//console.log(minCity[city]);
 	}
 }
 var minCountry;
 
+var cCodes;
 function addCountry(city,cCode)
 {
+//if(cCode=="UK")
+//alert(cCode);
+cCodes[city] = cCode;
 	if(minCountry[cCode] == null){
-			minCountry[cCode] = countryPrices[city];
+			minCountry[cCode] = minCity[city];
 			
-			}else if(minCountry[cCode]>countryPrices[city]){
-				minCountry[cCode] = countryPrices[city];
+			}else if(minCountry[cCode]>minCity[city]){
+				minCountry[cCode] = minCity[city];
 			}
-	updat();
+	updat(cCode);
 	
 }
 
-function getCountry(to){
+
+
+
+//////requests functions
+function getCities(to){
+
 var xmlhttp;
 			
 		//console.log("getting");
+		
 			if (window.XMLHttpRequest){//code for modern browsers
 				xmlhttp=new XMLHttpRequest();
 			}else{// code for oldies IE6, IE5
 				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 			}		
 			xmlhttp.requestID = requestID;
+			alert("evaluation");
 			xmlhttp.onreadystatechange=function(){
 			//console.log(xmlhttp.readyState);
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){//xmlhttp.readyState==4 &&
 				
 				var x = eval(xmlhttp.responseText);
-				addCountry(to,x[0].ci);
+				
+				
+				if(x.length > 0){
+					addCountry(to,x[0].ci);
+				}
+				else
+				console.log(to);
+				
 				//my_JSON_object = JSON.parse(xmlhttp.responseText);
 				
 			}
@@ -108,8 +132,9 @@ var xmlhttp;
 
 function chOri(){
 		var xmlhttp;
+		
 			
-		//console.log("getOri");
+		console.log("getOri");
 		
 			if (window.XMLHttpRequest){//code for modern browsers
 				xmlhttp=new XMLHttpRequest();
@@ -119,15 +144,21 @@ function chOri(){
 			xmlhttp.requestID = requestID;
 			xmlhttp.onreadystatechange=function(){
 			//console.log(xmlhttp.readyState);
+			//console.log(xmlhttp.status);
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){//xmlhttp.readyState==4 &&
-				
+				//console.log("changed");
+				//console.log(xmlhttp.responseText);
+			
 				var x = eval(xmlhttp.responseText);
-				
+				if(x!=null){
 				//my_JSON_object = JSON.parse(xmlhttp.responseText);
 				ori = x[0].i;
 				//console.log("origin");
-				console.log(x);
+				//console.log(x);
 				change();
+				//console.log(x[0].ci);
+				}
+				
 			}
 			
 		}
