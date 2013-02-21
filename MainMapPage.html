@@ -72,12 +72,12 @@
 		outline-style: dotted;
 		outline-color: skyblue;
 		margin-top:50px;
-		margin-bottom:50px;
+		margin-bottom:25px;
 		background-color:white;
 		}
 		
 		div.skydate{
-		height: 600px;
+		height: 800px;
 		min-height: 300px;
 		width:200px;
 		padding 1px;
@@ -86,7 +86,6 @@
 		color: black;
 		float:left;
 		text-align: center;
-		z-index:1
 		}
 		
 		table {border-collapse:collapse;}
@@ -105,23 +104,12 @@
 		<h1> THE MAPINATOR </h1>
 		
 		<div class="skybg" id="container">
+		
 			<div class="skydate" id="leftcontainer" style = "float: left;">
 				<div class="skydate" id="dates">
-				<iframe src="table.html" width="200" height ="600"></iframe>
+				<iframe src="table.html" width="200" height ="800"></iframe>
 				</div>
 				
-				<div id="dateform" style= "height:10px; width:10px; margin-top:10px; background-color: skyblue; 
-				text-align:left; padding:5px;">
-				<form name="input" action="undefined" method="get">
-				<fieldset>
-				<legend> Your Adventure Length </legend>
-				Minimum Days: <input type="text" id="minD" value=""><br>
-				Maximum Days: <input type="text" id="maxD" value=""><br>
-				Budget (GBP): <div id="bRangeValue" class="sliderValue"></div> <br> <input type="range" id="bRange" value="100" min="0" max="1000" step="25" onchange="OnSliderChanged (this)"/><br>
-				<input type="submit" value="Submit">
-				</fieldset>
-				</form> 
-				</div>
 			</div>
 
 				<div id="map" style="background-color:skyblue; height:800px;">
@@ -129,7 +117,19 @@
 				
 		</div>
 		
-		<div id="footer" style="background-color:#353535;clear:both;text-align:center; color: white">
+			<div id="dateform" style= "height:10px; margin-top:5px;text-align:left; padding:5px;backgorund-color: skyblue;">
+			<form name="input" action="undefined" method="get">
+			<fieldset>
+			<legend> Your Adventure Length </legend>
+			Minimum Days: <input type="text" id="minD" value="">
+			Maximum Days: <input type="text" id="maxD" value=""><br>
+			Budget (GBP): <div id="bRangeValue" class="sliderValue"></div> <input type="range" id="bRange" value="100" min="0" max="1000" step="25" onchange="OnSliderChanged (this)"/>
+			<input type="submit" value="Submit">
+			</fieldset>
+			</form> 
+			</div>
+		
+		<div id="footer" style="background-color:#353535;clear:both;text-align:center; color: white; float: bottom;">
 		EDINBURGH UNIVERSITY ILW OPENDATA HACK 2013<br> TEQUILACARTEL<sup>Yep that's our name.</sup> </div>
 
 	</body>
