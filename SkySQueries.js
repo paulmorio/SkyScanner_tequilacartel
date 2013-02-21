@@ -11,19 +11,30 @@ function minPrice(layer){
 	//alert(selected);
 	layer.quotes = new Array();
 	var dest = layer.feature.id;
-	var nDay = new Date(selected[0]);
-	nextDay(nDay);
-	nextDay(nDay); 
-	loadPrices(dest,selected[0],nDay,requestID,layer);
+	for(i =0;i<selected.length;i++){
+		
+		s = selected[i];
+		var nDay = new Date(s);
+		nextDay(nDay);
+		nextDay(nDay); 
+		loadPrices(dest,s,nDay,requestID,layer);
+	}
 }
 
 function getRequest(json,layer){
 
-	
-	layer.feature.minPrice = json.Quotes[0].MinPrice; //treba apsolutni minimum
-	console.log(json.Quotes[0].MinPrice);
-	console.log(layer.feature.MinPrice);
-	geojson.resetStyle(layer);
+	for(i =0;i<json.Quotes.length;i++){
+	q = json.Quotes[i];
+		if(layer.feature.minPrice == null){
+			layer.feature.minPrice = q.MinPrice;
+			geojson.resetStyle(layer);
+		}else if(layer.feature.minPrice>q.MinPrice){
+			layer.feature.minPrice = q.MinPrice; //treba apsolutni minimum
+			//console.log(json.Quotes[0].MinPrice);
+			//console.log(layer.feature.MinPrice);
+			geojson.resetStyle(layer);
+		}
+	}
 }
 
 function airPortLocation(code){
@@ -72,6 +83,7 @@ function loadPrices(dest,outb,inb,rID,layer){
 				//console.log(rID);
 				if(requestID == rID){
 					getRequest(my_JSON_object,layer)
+					console.log(my_JSON_object);
 				}
 			}
 			
