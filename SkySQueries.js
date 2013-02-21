@@ -11,11 +11,6 @@ function minPrice(){
 	minStay = parseInt(document.getElementById("minD").value);
 	maxStay = parseInt(document.getElementById("maxD").value);
 	
-	if (maxStay < minStay) {
-	maxStay = minStay;
-	document.getElementById("maxD").value = maxStay;
-	}
-	
 	for(i =0;i<selected.length;i++){
 		
 		s = selected[i];
@@ -119,7 +114,7 @@ var xmlhttp;
 function chOri(){
 		var xmlhttp;
 			
-		console.log("getting");
+		console.log("getOri");
 			if (window.XMLHttpRequest){//code for modern browsers
 				xmlhttp=new XMLHttpRequest();
 			}else{// code for oldies IE6, IE5
@@ -134,6 +129,7 @@ function chOri(){
 				
 				//my_JSON_object = JSON.parse(xmlhttp.responseText);
 				ori = x[0].i;
+				console.log("origin");
 				console.log(ori);
 			}
 			
