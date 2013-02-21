@@ -65,7 +65,7 @@ function getRequest(json){
 			getCities(city);
 			}else{
 			addCountry(city,cCodes[city]);
-			console.log("reuse");
+			//console.log("reuse");
 			}
 		//console.log(city);
 		//console.log(minCity[city]);
@@ -76,9 +76,9 @@ var minCountry;
 var cCodes;
 function addCountry(city,cCode)
 {
-//if(cCode=="UK")
-//alert(cCode);
+
 cCodes[city] = cCode;
+
 	if(minCountry[cCode] == null){
 			minCountry[cCode] = minCity[city];
 			
