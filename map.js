@@ -26,7 +26,7 @@ var requestID = 0;
 function change(){
 requestID++;
 	//for(x in selected){
-	chOri();
+	//chOri();
 	//console.log(selected);
 	getCountry("Edinburgh");
 	minPrice();
