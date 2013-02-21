@@ -44,7 +44,7 @@ function getRequest(json){
 		q = json.Quotes[i];
 		to = idToCountry[q.OutboundLeg.DestinationId];
 		//alert("works");
-		getCountry(to);
+		//getCountry(to);
 		if(countryPrices[to] == null){
 			countryPrices[to] = q.MinPrice;
 			
@@ -90,8 +90,9 @@ var xmlhttp;
 			xmlhttp.requestID = requestID;
 			xmlhttp.onreadystatechange=function(){
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){
-				my_JSON_object = JSON.parse(xmlhttp.responseText);
-				console.log(my_JSON_object);
+				var x = xmlhttp.responseText
+				//my_JSON_object = JSON.parse(xmlhttp.responseText);
+				console.log(x);
 			}
 			
 		}
