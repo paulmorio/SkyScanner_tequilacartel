@@ -24,6 +24,8 @@ function style(feature) {
 }
 var requestID = 0;
 function change(){
+countryPrices = new Object();
+	minCountry = new Object();
 requestID++;
 	//for(x in selected){
 	//chOri();
