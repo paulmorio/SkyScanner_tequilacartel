@@ -14,7 +14,7 @@ var geojson;
 var tst = 10000;
 function style(feature) {
     return {
-        fillColor: getColor(feature.minPrice),//minPrice(feature.id)),
+        fillColor: getColor(feature.properties.minPrice),//minPrice(feature.id)),
         weight: 2,
         opacity: 1,
         color: 'white',
@@ -29,7 +29,7 @@ requestID++;
 	//console.log(selected);
 
 		geojson.eachLayer(function (layer) {
-			layer.feature.minPrice = null;
+			layer.feature.properties.minPrice = null;
 			geojson.resetStyle(layer);
 			minPrice(layer);
 			//console.log(layer.feature.id);
@@ -91,7 +91,8 @@ info.onAdd = function (map) {
 info.update = function (props) {
     this._div.innerHTML = '<h4>Go to:</h4>' +  (props ?
         '<b>' + props.name + '</b><br />' 
-        : 'Hover over a country');
+        : 'Hover over a country') + (props ==null || props.minPrice == null ? "" : '<br />From: '+props.minPrice.toFixed(0)+' GBP');
+        
         
 };
 

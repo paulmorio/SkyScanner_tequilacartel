@@ -25,11 +25,11 @@ function getRequest(json,layer){
 
 	for(i =0;i<json.Quotes.length;i++){
 	q = json.Quotes[i];
-		if(layer.feature.minPrice == null){
-			layer.feature.minPrice = q.MinPrice;
+		if(layer.feature.properties.minPrice == null){
+			layer.feature.properties.minPrice = q.MinPrice;
 			geojson.resetStyle(layer);
-		}else if(layer.feature.minPrice>q.MinPrice){
-			layer.feature.minPrice = q.MinPrice; //treba apsolutni minimum
+		}else if(layer.feature.properties.minPrice>q.MinPrice){
+			layer.feature.properties.minPrice = q.MinPrice; //treba apsolutni minimum
 			//console.log(json.Quotes[0].MinPrice);
 			//console.log(layer.feature.MinPrice);
 			geojson.resetStyle(layer);
