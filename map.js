@@ -27,7 +27,7 @@ function change(){
 requestID++;
 	//for(x in selected){
 	chOri();
-	console.log(selected);
+	//console.log(selected);
 	getCountry("Edinburgh");
 	minPrice();
 		geojson.eachLayer(function (layer) {

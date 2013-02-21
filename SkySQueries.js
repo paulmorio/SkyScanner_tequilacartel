@@ -89,14 +89,14 @@ var xmlhttp;
 
 function addCountry(x)
 {
-	console.log(x);
-	console.log(x[0].ci);
+	//console.log(x);
+	//console.log(x[0].ci);
 }
 
 function getCountry(city){
 var xmlhttp;
 			
-		console.log("getting");
+		//console.log("getting");
 			if (window.XMLHttpRequest){//code for modern browsers
 				xmlhttp=new XMLHttpRequest();
 			}else{// code for oldies IE6, IE5
@@ -105,7 +105,11 @@ var xmlhttp;
 			xmlhttp.requestID = requestID;
 			xmlhttp.onreadystatechange=function(){
 <<<<<<< HEAD
+<<<<<<< HEAD
 			console.log(xmlhttp.readyState);
+=======
+			//console.log(xmlhttp.readyState);
+>>>>>>> sync
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){//xmlhttp.readyState==4 &&
 				
 				var x = eval(xmlhttp.responseText);
@@ -133,7 +137,8 @@ var xmlhttp;
 function chOri(){
 		var xmlhttp;
 			
-		console.log("getOri");
+		//console.log("getOri");
+		
 			if (window.XMLHttpRequest){//code for modern browsers
 				xmlhttp=new XMLHttpRequest();
 			}else{// code for oldies IE6, IE5
@@ -141,22 +146,25 @@ function chOri(){
 			}		
 			xmlhttp.requestID = requestID;
 			xmlhttp.onreadystatechange=function(){
-			console.log(xmlhttp.readyState);
+			//console.log(xmlhttp.readyState);
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){//xmlhttp.readyState==4 &&
 				
 				var x = eval(xmlhttp.responseText);
 				
 				//my_JSON_object = JSON.parse(xmlhttp.responseText);
 				ori = x[0].i;
-				console.log("origin");
+				//console.log("origin");
 				console.log(ori);
+				change();
 			}
 			
 		}
 		var my_JSON_object = {};
 		city = document.getElementById("origin").value;
+		console.log("http://api.skyscanner.net/as.ashx?&t="+city+"&l=en&d=1&c=GBP");
 		xmlhttp.open("GET","http://api.skyscanner.net/as.ashx?&t="+city+"&l=en&d=1&c=GBP",true);		
 		xmlhttp.send();
+		
 	
 }
 
