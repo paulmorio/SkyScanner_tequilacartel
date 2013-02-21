@@ -81,6 +81,7 @@ var xmlhttp;
 function getCountry(city){
 var xmlhttp;
 			
+		console.log("getting");
 			if (window.XMLHttpRequest){//code for modern browsers
 				xmlhttp=new XMLHttpRequest();
 			}else{// code for oldies IE6, IE5
@@ -89,14 +90,13 @@ var xmlhttp;
 			xmlhttp.requestID = requestID;
 			xmlhttp.onreadystatechange=function(){
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){
-				y_JSON_object = JSON.parse(xmlhttp.responseText);
-				console.log(y_JSON_object);
+				my_JSON_object = JSON.parse(xmlhttp.responseText);
+				console.log(my_JSON_object);
 			}
 			
 		}
 		var my_JSON_object = {};
-		var ori = "EDI";
-		xmlhttp.open("GET","http://api.skyscanner.net/as.ashx?&t="+city+"&l=en&d=1&c=GBP&callback=skyscanner.loader.callbacks.requestid1",true);		
+		xmlhttp.open("GET","http://api.skyscanner.net/as.ashx?&t="+city+"&l=en&d=1&c=GBP&callback=sky",true);		
 		xmlhttp.send();
 	
 }
