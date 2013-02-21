@@ -60,14 +60,18 @@
 		background-position:top right;
 		}
 		
-		div.skybg {
+		div.skybg1 {
 		height: 700px;
 		border: 10px inset skyblue;
 		outline-style: dotted;
 		outline-color: skyblue;
-		margin-top:50px;
+		margin-top:100px;
 		margin-bottom:10px;
 		background-color:white;
+		}
+		
+		div.skybg2 {
+		height:30px;
 		}
 		
 		div.skydate{
@@ -95,9 +99,31 @@
 		</style> 
 	</head>
 	<body onload="initialize()">
-		<h1> THE MAPINATOR </h1>
 		
-		<div class="skybg" id="container">
+		<div class = "skybg2" id="formcontainer">
+			<!--<div style="width: 300px; float: right;">
+			<h1> THE MAPINATOR </h1>
+			</div>-->
+			<div id="dateform" style= "height:10px;float:left; text-align:left; padding:5px;">
+				<form name="input" action="undefined" method="get">
+				<fieldset style = "background-color: skyblue;">
+				<legend style = "background-color: skyblue;"> <h2>Your Trip Length</h2> </legend>
+				<b>MINIMUM DAYS:</b> <input type="text" id="minD" value="7"/>
+				<b>MAXIMUM DAYS:</b> <input type="text" id="maxD" value="14"/>
+				<b>BUDGET (GBP):</b> 
+
+						<div style="float: right">	<link rel="stylesheet" type="text/css" href="range.css"/>
+							<input type="range" name="range1" min="0" max="2500" step="25" value="100" />
+							<script>
+								$(":range").rangeinput();
+							</script>
+						</div>
+				</fieldset>
+				</form> 
+			</div>
+		</div>
+		
+		<div class="skybg1" id="container">
 		
 			<div class="skydate" id="leftcontainer" style = "float: left;">
 				<div class="skydate" id="dates">
@@ -106,36 +132,15 @@
 				
 			</div>
 
-				<div id="map" style="background-color:skyblue; height:700px;">
-				</div>
+			<div id="map" style="background-color:skyblue; height:700px;">
+			</div>
 				
 		</div>
 		
-		<div>
-			<div id="dateform" style= "height:10px; width: 1000px; margin-top:5px;float: left; text-align:left; padding:5px; ">
-			<form name="input" action="undefined" method="get">
-			<fieldset style = "background-color: skyblue;">
-			<legend style = "background-color: skyblue;"> <h2>Your Trip Length</h2> </legend>
-			<b>MINIMUM DAYS:</b> <input type="text" id="minD" value="7"/>
-			<b>MAXIMUM DAYS:</b> <input type="text" id="maxD" value="14"/>
-			<b>BUDGET (GBP):</b> 
-
-					<div style="float: right">	<link rel="stylesheet" type="text/css" href="range.css"/>
-						<input id="budget" type="range" name="range1" min="0" max="1500" step="25" value="100" />
- 
- 							<script>
-							    $(":range").rangeinput();
-							</script>
-					</div>
-			</fieldset>
-			</form> 
-			</div>
-		
-		<div id="footer" style="width: 300px; background-color:#353535; float: right; clear:both;text-align:center; color: white;">
-		EDINBURGH UNIVERSITY ILW OPENDATA HACK 2013<br> TEQUILACARTEL<sup>Yep that's our name.</sup> </div>
+		<div id="footer" style="background-color:#353535; clear:both;text-align:center; color: white;">
+			<div style="width:400px; float: left;"> <h1>THE MAPINATOR</h1> </div>
+			<div style="width:400px; float: right;">EDINBURGH UNIVERSITY ILW OPENDATA HACK 2013<br> TEQUILACARTEL<sup>Yep that's our name.</sup> </div>
 		</div>
 		
 	</body>
 </html>
-
-	
