@@ -27,7 +27,7 @@ function change(){
 requestID++;
 	//for(x in selected){
 	console.log(selected);
-	getCountry("edi");
+	getCountry("Edinburgh");
 	minPrice();
 		geojson.eachLayer(function (layer) {
 			layer.feature.properties.minPrice = null;

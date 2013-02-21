@@ -90,14 +90,16 @@ var xmlhttp;
 			xmlhttp.requestID = requestID;
 			xmlhttp.onreadystatechange=function(){
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){
-				var x = xmlhttp.responseText
+				
+				var x = eval(xmlhttp.responseText);
+				
 				//my_JSON_object = JSON.parse(xmlhttp.responseText);
 				console.log(x);
 			}
 			
 		}
 		var my_JSON_object = {};
-		xmlhttp.open("GET","http://api.skyscanner.net/as.ashx?&t="+city+"&l=en&d=1&c=GBP&callback=sky",true);		
+		xmlhttp.open("GET","http://api.skyscanner.net/as.ashx?&t="+city+"&l=en&d=1&c=GBP",true);		
 		xmlhttp.send();
 	
 }
