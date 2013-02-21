@@ -97,17 +97,14 @@ function getCities(to){
 
 var xmlhttp;
 			
-		//console.log("getting");
 		
 			if (window.XMLHttpRequest){//code for modern browsers
 				xmlhttp=new XMLHttpRequest();
 			}else{// code for oldies IE6, IE5
 				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 			}		
-			xmlhttp.requestID = requestID;
 			//alert("evaluation");
 			xmlhttp.onreadystatechange=function(){
-			//console.log(xmlhttp.readyState);
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){//xmlhttp.readyState==4 &&
 				
 				var x = eval(xmlhttp.responseText);
@@ -116,9 +113,9 @@ var xmlhttp;
 				if(x.length > 0){
 					addCountry(to,x[0].ci);
 				}
-				else
-				console.log(to);
-				
+				else{
+					console.log(to);//dont remove
+				}
 				//my_JSON_object = JSON.parse(xmlhttp.responseText);
 				
 			}
@@ -133,30 +130,23 @@ var xmlhttp;
 function chOri(){
 		var xmlhttp;
 		
-			
-		console.log("getOri");
 		
 			if (window.XMLHttpRequest){//code for modern browsers
 				xmlhttp=new XMLHttpRequest();
 			}else{// code for oldies IE6, IE5
 				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 			}		
-			xmlhttp.requestID = requestID;
 			xmlhttp.onreadystatechange=function(){
-			//console.log(xmlhttp.readyState);
-			//console.log(xmlhttp.status);
+			console.log(xmlhttp.readyState);
+			console.log(xmlhttp.status);
+			console.log(eval(xmlhttp.responseText));
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){//xmlhttp.readyState==4 &&
-				//console.log("changed");
-				//console.log(xmlhttp.responseText);
-			
+
 				var x = eval(xmlhttp.responseText);
 				if(x!=null){
-				//my_JSON_object = JSON.parse(xmlhttp.responseText);
-				ori = x[0].i;
-				//console.log("origin");
-				//console.log(x);
-				change();
-				//console.log(x[0].ci);
+				//	my_JSON_object = JSON.parse(xmlhttp.responseText);
+					ori = x[0].i;
+					change();
 				}
 				
 			}
@@ -232,7 +222,6 @@ var xmlhttp;
 			}else{// code for oldies IE6, IE5
 				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 			}		
-			xmlhttp.requestID = requestID;
 			xmlhttp.onreadystatechange=function(){
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){
 				//console.log(xmlhttp.responseText);

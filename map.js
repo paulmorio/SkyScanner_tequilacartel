@@ -24,13 +24,14 @@ function style(feature) {
 }
 var requestID = 0;
 function change(){
+minCity = new Object();
+	minCountry = new Object();
 			geojson.eachLayer(function (layer) {
 			layer.feature.properties.minPrice = null;
 			geojson.resetStyle(layer);
 	});
 
-minCity = new Object();
-	minCountry = new Object();
+
 requestID++;
 	minPrice();
 		
@@ -68,7 +69,7 @@ function initialize(){
 	layerHash = new Object();
 selected = new Array();
       var position = new L.LatLng(47.723713744687274, 20.3);
-      var zoom = 4; 
+      var zoom = 3; 
 
       // is our Leaflet map object
 	map = new L.Map('map').setView(position, zoom)
