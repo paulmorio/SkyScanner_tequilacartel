@@ -65,7 +65,7 @@ function getRequest(json){
 	}
 }
 
-function airPortLocation(code){
+function airportLocation(code){
 var xmlhttp;
 			
 			if (window.XMLHttpRequest){//code for modern browsers
@@ -81,16 +81,18 @@ var xmlhttp;
 			
 		}
 		var my_JSON_object = {};
-		var ori = "EDI";
 		xmlhttp.open("GET","http://maps.google.com/maps/geo?q="+code+"&output=csv&sensor=false",true);		
 		xmlhttp.send();
 	
 }
-
-function addCountry(x)
+var countries;
+function addCountry(x,city)
 {
 	//console.log(x);
-	//console.log(x[0].ci);
+	console.log(x[0].ci);
+	//return x[0].ci;
+	countries[city] = x[0].ci;
+	
 }
 
 function getCountry(city){
@@ -108,7 +110,7 @@ var xmlhttp;
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){//xmlhttp.readyState==4 &&
 				
 				var x = eval(xmlhttp.responseText);
-				addCountry(x);
+				addCountry(x,city);
 				//my_JSON_object = JSON.parse(xmlhttp.responseText);
 				
 			}
@@ -140,7 +142,7 @@ function chOri(){
 				//my_JSON_object = JSON.parse(xmlhttp.responseText);
 				ori = x[0].i;
 				//console.log("origin");
-				console.log(ori);
+				console.log(x);
 				change();
 			}
 			
@@ -155,7 +157,7 @@ function chOri(){
 }
 
 http://api.skyscanner.net/as.ashx?&t=un&l=en&d=1&c=GBP&callback=skyscanner.loader.callbacks.requestid1
-var ori;
+var ori = "EDI";
 function loadPrices(outb,inb,rID){
 			var xmlhttp;
 			//console.log("sendR");

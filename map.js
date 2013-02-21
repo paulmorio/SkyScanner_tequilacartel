@@ -28,15 +28,11 @@ requestID++;
 	//for(x in selected){
 	//chOri();
 	//console.log(selected);
-	getCountry("Edinburgh");
+	//getCountry("Edinburgh");
 	minPrice();
-		geojson.eachLayer(function (layer) {
-			layer.feature.properties.minPrice = null;
-			geojson.resetStyle(layer);
-			
-			//console.log(layer.feature.id);
-    	
-});
+		
+
+
 //onEachFeature: function (feature, layer) {
   //      resetHighlight(feature);
     //}
@@ -44,6 +40,17 @@ requestID++;
 	//}
 }
 
+function updat(){
+	geojson.eachLayer(function (layer) {
+			layer.feature.properties.minPrice = null;
+			countries.properties.id;
+			if(countries[
+			geojson.resetStyle(layer);
+			
+			//console.log(layer.feature.id);
+    	
+	});
+}
 
 
 
