@@ -9,14 +9,8 @@
 <script src="worldMap.js"></script>
 <script src="SkySQueries.js"></script>
 <script src="map.js"></script>
-	<script type="text/javascript">
+<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
 
-	function OnSliderChanged (slider) {
-		var sliderValue = document.getElementById ("bRangeValue");
-		sliderValue.innerHTML = slider.value;
-        }
-
-    </script>
 
 
 		<style type="text/css">
@@ -118,14 +112,21 @@
 		</div>
 		
 		<div>
-			<div id="dateform" style= "height:10px; width: 800px; margin-top:5px;float: left; text-align:left; padding:5px; ">
+			<div id="dateform" style= "height:10px; width: 1000px; margin-top:5px;float: left; text-align:left; padding:5px; ">
 			<form name="input" action="undefined" method="get">
 			<fieldset style = "background-color: skyblue;">
 			<legend style = "background-color: skyblue;"> <h2>Your Trip Length</h2> </legend>
 			<b>MINIMUM DAYS:</b> <input type="text" id="minD" value="7"/>
 			<b>MAXIMUM DAYS:</b> <input type="text" id="maxD" value="14"/>
-			<b>BUDGET (GBP):</b> <div id="bRangeValue" class="sliderValue" style="width: 30px;"> </div> <input type="range" id="bRange" value="100" min="0" max="1000" step="25" onchange="OnSliderChanged (this)"/>
-			<input type="submit" value="Submit">
+			<b>BUDGET (GBP):</b> 
+
+					<div style="float: right">	<link rel="stylesheet" type="text/css" href="range.css"/>
+						<input type="range" name="range1" min="0" max="1500" step="25" value="100" />
+ 
+ 							<script>
+							    $(":range").rangeinput();
+							</script>
+					</div>
 			</fieldset>
 			</form> 
 			</div>
