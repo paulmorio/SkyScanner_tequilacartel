@@ -44,6 +44,8 @@
     }
  
     $( "#city" ).autocomplete({
+		source: function(){
+		},
       source: function( request, response ) {
 /*        $.ajax({
           url: "http://ws.geonames.org/searchJSON",
@@ -51,7 +53,8 @@
 /*
 http://ws.geonames.org/searchJSON?callback=jQuery19109414340178482234_1361456417170&featureClass=P&style=full&maxRows=12&name_startsWith=lo&_=1361456417173
 //
-// change "un"	  http://api.skyscanner.net/as.ashx?&t=un&l=en&d=1&c=GBP&callback=skyscanner.loader.callbacks.requestid1
+// change "un"	  
+http://api.skyscanner.net/as.ashx?&t=un&l=en&d=1&c=GBP&callback=skyscanner.loader.callbacks.requestid1
           dataType: "jsonp",
           data: {
             featureClass: "P",
