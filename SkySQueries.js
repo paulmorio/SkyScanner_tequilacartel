@@ -5,7 +5,7 @@ function nextDay(dat) {
 	return dat.setDate(dat.getDate() + 1);
 	}
 function minPrice(layer){
-	minStay = documents.getElementById("minD").value;
+	minStay = document.getElementById("minD").value;
 	maxStay = document.getElementById("maxD").value;
 	//loadPrices(dest,inDates[0],nextDayinDates[0]
 	//alert(selected);
