@@ -85,7 +85,7 @@ function makeTable() {
     document.getElementById('mytable').appendChild(tab);
 	}
 
-function select() {
+function select(event) {
 
 
 	buttons=new Array();
@@ -95,7 +95,7 @@ function select() {
 	}
 	
 
-	if (window.event.shiftKey) {
+	if (event.shiftKey) {
 		if (isOneSel(buttons)) {
 
 		var b=whichIsSel(buttons);
@@ -114,7 +114,7 @@ function select() {
 		}
 
 	
-	} else if (window.event.ctrlKey || window.event.altKey) {
+	} else if (event.ctrlKey || event.altKey) {
 
 		if (this.sel == false) {
 			this.style.backgroundColor = 'red';
