@@ -10,6 +10,15 @@ function minPrice(){
 	
 	minStay = parseInt(document.getElementById("minD").value);
 	maxStay = parseInt(document.getElementById("maxD").value);
+
+	if (maxStay < minStay) {
+	temp = minStay;
+	minStay = maxStay;
+	maxStay = temp;
+
+	document.getElementById("minD").value = minStay;
+	document.getElementById("maxD").value = maxStay;
+	}
 	
 	for(i =0;i<selected.length;i++){
 		
