@@ -10,15 +10,6 @@ function minPrice(){
 	
 	minStay = parseInt(document.getElementById("minD").value);
 	maxStay = parseInt(document.getElementById("maxD").value);
-
-	if (maxStay < minStay) {
-	temp = minStay;
-	minStay = maxStay;
-	maxStay = temp;
-
-	document.getElementById("minD").value = minStay;
-	document.getElementById("maxD").value = maxStay;
-	}
 	
 	for(i =0;i<selected.length;i++){
 		
@@ -104,31 +95,17 @@ var xmlhttp;
 			}		
 			xmlhttp.requestID = requestID;
 			xmlhttp.onreadystatechange=function(){
-<<<<<<< HEAD
-<<<<<<< HEAD
-			console.log(xmlhttp.readyState);
-=======
 			//console.log(xmlhttp.readyState);
->>>>>>> sync
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){//xmlhttp.readyState==4 &&
 				
 				var x = eval(xmlhttp.responseText);
 				addCountry(x);
 				//my_JSON_object = JSON.parse(xmlhttp.responseText);
 				
-=======
-			if(xmlhttp.readyState==4 && xmlhttp.status==200){
-				y_JSON_object = eval(xmlhttp.responseText);
-				console.log(y_JSON_object);
->>>>>>> tests for autocomplete
 			}
 			
 		}
 		var my_JSON_object = {};
-<<<<<<< HEAD
-=======
-		var ori = "EDI";
->>>>>>> tests for autocomplete
 		xmlhttp.open("GET","http://api.skyscanner.net/as.ashx?&t="+city+"&l=en&d=1&c=GBP",true);		
 		xmlhttp.send();
 	
