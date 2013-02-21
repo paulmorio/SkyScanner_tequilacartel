@@ -26,12 +26,12 @@ var requestID = 0;
 function change(){
 requestID++;
 	//for(x in selected){
-	//console.log(selected);
-
+	console.log(selected);
+	minPrice();
 		geojson.eachLayer(function (layer) {
 			layer.feature.properties.minPrice = null;
 			geojson.resetStyle(layer);
-			minPrice(layer);
+			
 			//console.log(layer.feature.id);
     	
 });
@@ -51,10 +51,11 @@ requestID++;
     var info = L.control();
     var map;
     
-    
+    var countryPrices;
 function initialize(){
 	//makeTable();
 	//loadPrices();
+	countryPrices = new Object();
 selected = new Array();
       var position = new L.LatLng(47.723713744687274, 20.3);
       var zoom = 4; 
