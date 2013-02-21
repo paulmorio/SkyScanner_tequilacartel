@@ -87,6 +87,7 @@ function makeTable() {
 
 function select() {
 
+
 	buttons=new Array();
 
 	for(c=0;c<a;c++) {
@@ -94,7 +95,7 @@ function select() {
 	}
 	
 
-	if (event.shiftKey) {
+	if (window.event.shiftKey) {
 		if (isOneSel(buttons)) {
 
 		var b=whichIsSel(buttons);
@@ -113,7 +114,7 @@ function select() {
 		}
 
 	
-	} else if (event.ctrlKey || event.altKey) {
+	} else if (window.event.ctrlKey || window.event.altKey) {
 
 		if (this.sel == false) {
 			this.style.backgroundColor = 'red';
