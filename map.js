@@ -14,7 +14,7 @@ var geojson;
 var tst = 10000;
 function style(feature) {
     return {
-        fillColor: getColor(feature.properties.minPrice),//minPrice(feature.id)),
+        fillColor: getColor(minCountry[feature.id]),//feature.properties.minPrice),//minPrice(feature.id)),
         weight: 2,
         opacity: 1,
         color: 'white',
@@ -43,8 +43,10 @@ requestID++;
 function updat(){
 	geojson.eachLayer(function (layer) {
 			layer.feature.properties.minPrice = null;
-			countries.properties.id;
-			if(countries[
+			//countries.properties.id;
+			//if(layer
+			//if(layer.feature != null)
+				layer.feature.properties.minPrice = minCountry[layer.feature.id];
 			geojson.resetStyle(layer);
 			
 			//console.log(layer.feature.id);
@@ -65,6 +67,7 @@ function initialize(){
 	//makeTable();
 	//loadPrices();
 	countryPrices = new Object();
+	minCountry = new Object();
 selected = new Array();
       var position = new L.LatLng(47.723713744687274, 20.3);
       var zoom = 4; 
