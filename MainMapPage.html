@@ -82,7 +82,7 @@
 		width:200px;
 		padding 1px;
 		border-right: 5px solid #skyblue;
-		background-color:skyblue;
+		background-color:orangered;
 		color: black;
 		float:left;
 		text-align: center;
@@ -121,10 +121,10 @@
 			<div id="dateform" style= "height:10px; width: 960px; margin-top:5px;float: left; text-align:left; padding:5px; ">
 			<form name="input" action="undefined" method="get">
 			<fieldset style = "background-color: skyblue;">
-			<legend> Your Trip Length </legend>
-			Minimum Days: <input type="text" id="minD" value="7"/>
-			Maximum Days: <input type="text" id="maxD" value="14"/>
-			Budget (GBP): <div id="bRangeValue" class="sliderValue"></div> <input type="range" id="bRange" value="100" min="0" max="1000" step="25" onchange="OnSliderChanged (this)"/>
+			<legend style = "background-color: skyblue;"> <h2>Your Trip Length</h2> </legend>
+			<b>MINIMUM DAYS:</b> <input type="text" id="minD" value="7"/>
+			<b>MAXIMUM DAYS:</b> <input type="text" id="maxD" value="14"/>
+			<b>BUDGET (GBP):</b> <div id="bRangeValue" class="sliderValue"></div> <input type="range" id="bRange" value="100" min="0" max="1000" step="25" onchange="OnSliderChanged (this)"/>
 			<input type="submit" value="Submit">
 			</fieldset>
 			</form> 
