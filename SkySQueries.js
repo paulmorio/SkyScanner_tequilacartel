@@ -105,7 +105,7 @@ var xmlhttp;
 				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 			}		
 			xmlhttp.requestID = requestID;
-			alert("evaluation");
+			//alert("evaluation");
 			xmlhttp.onreadystatechange=function(){
 			//console.log(xmlhttp.readyState);
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){//xmlhttp.readyState==4 &&
