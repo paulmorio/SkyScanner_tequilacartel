@@ -91,6 +91,7 @@ function getRequest(json,rID){
 		//console.log(minCity[city]);
 		
 	}
+	chSlide();
 }
 var minCountry;
 
@@ -256,10 +257,10 @@ function coords(name,rID){
 			xmlhttp.onreadystatechange=function(){
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){
 			coo = eval('['+xmlhttp.responseText+']').slice(2,4);
-			
+			cityCoordinates[name] = coo;
 				if(requestID == rID){
-				
-					cityCoordinates[name] = coo;
+					chSlide();
+					
 					//update pin
 					
 				}else if(rID = -1){

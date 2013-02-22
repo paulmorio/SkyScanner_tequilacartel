@@ -45,16 +45,23 @@ function changeOrigin(coors){
 
 	if(oriCirc != null){
 	console.log(coors);
-		oriCirc.setLatLong(coords);
+		oriCirc.setLatLng(coors);
 	}else{
-	
+		
 		oriCirc = L.marker(coors);
+		console.log(oriCirc);
 		oriCirc.addTo(map);
 	}
 }
 
 function chSlide(){
-	console.log(document.getElementById("budget").value);
+alert(document.getElementById("budget").value);
+	//console.log();
+	var maxH = document.getElementById("budget").value/10;
+	for(i =0; i<maxH;i++){
+		cities = citiesByPrices[i];
+		oriCirc = L.marker(cityCoordinates[cities[0].destination]);
+	}
 }
 
 function updat(cCode){
