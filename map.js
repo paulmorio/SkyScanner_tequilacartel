@@ -51,9 +51,9 @@ function changeOrigin(coors){
 		    iconUrl: 'homeIconSmall.png',
 		    //shadowUrl: 'leaf-shadow.png',
 
-		    iconSize:     [40, 50], // size of the icon
+		    iconSize:     [40, 51], // size of the icon
 		    //shadowSize:   [50, 64], // size of the shadow
-		    iconAnchor:   [20, 49], // point of the icon which will correspond to marker's location
+		    iconAnchor:   [20, 50], // point of the icon which will correspond to marker's location
 		    //shadowAnchor: [4, 62],  // the same for the shadow
 		    //popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 		});
@@ -64,7 +64,6 @@ function changeOrigin(coors){
 }
 
 function chSlide(){
-alert(document.getElementById("budget").value);
 	//console.log();
 	var maxH = document.getElementById("budget").value/10;
 	for(i =0; i<maxH;i++){
@@ -73,13 +72,13 @@ alert(document.getElementById("budget").value);
 		    iconUrl: 'arrow.png',
 		    //shadowUrl: 'leaf-shadow.png',
 
-		    iconSize:     [40, 51], // size of the icon
+		    iconSize:     [40, 50], // size of the icon
 		    //shadowSize:   [50, 64], // size of the shadow
-		    iconAnchor:   [20, 50], // point of the icon which will correspond to marker's location
+		    iconAnchor:   [20, 49], // point of the icon which will correspond to marker's location
 		    //shadowAnchor: [4, 62],  // the same for the shadow
 		    //popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 		});
-		oriCirc = L.marker(cityCoordinates[cities[0].destination]);
+		L.marker(cityCoordinates[cities[0].destination]);
 	}
 }
 
