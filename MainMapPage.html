@@ -115,7 +115,7 @@
 				<b style="margin-left: 10px">BUDGET (GBP):</b> 
 
 						<div style="margin-left: 10px; float: right;">	<link rel="stylesheet" type="text/css" href="range.css"/>
-							<input type="range" name="range1" min="0" max="2500" step="25" value="100" />
+							<input type="range" id="buget" name="range1" min="0" max="2500" step="10" value="100" onchange="chSlide()"/>
 							<script>
 								$(":range").rangeinput();
 							</script>
