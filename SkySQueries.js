@@ -186,7 +186,7 @@ function chOri(){
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){//xmlhttp.readyState==4 &&
 			
 				var x = eval(xmlhttp.responseText);
-				console.log(x);
+				//console.log(x);
 				if(x!=null){
 					ori = x[0].i;
 					coords(x[0].en,-9999);
