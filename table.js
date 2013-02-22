@@ -35,6 +35,50 @@ function whatDay(day) {
 	return x;
 	}
 
+function whatMonth(month) {
+	
+	switch (month)
+		{
+		case 0:
+		  x="January";
+		  break;
+		case 1:
+		  x="February";
+		  break;
+		case 2:
+		  x="March";
+		  break;
+		case 3:
+		  x="April";
+		  break;
+		case 4:
+		  x="May";
+		  break;
+		case 5:
+		  x="June";
+		  break;
+		case 6:
+		  x="July";
+		  break;
+		case 7:
+		  x="August";
+		  break;
+		case 8:
+		  x="September";
+		  break;
+		case 9:
+		  x="October";
+		  break;
+		case 10:
+		  x="November";
+		  break;
+		case 11:
+		  x="December";
+		  break;
+		} 
+	return x;
+	}
+
 function makeTable() {
 
 	row=new Array();
@@ -55,7 +99,7 @@ function makeTable() {
 	for(c=0;c<row_num;c++){
 	row[c]=document.createElement('tr');
 	date[c]=new Date(dat);
-	dateName[c]= whatDay(dat.getDay()) + "\n" + dat.getDate() + "/" + (dat.getMonth()+1) + "/" + dat.getFullYear();
+	dateName[c]= whatDay(dat.getDay()) + "\n" + dat.getDate() + " " + whatMonth(dat.getMonth()) + " " + dat.getFullYear();
 	nextDay(dat);
 		//sets the dates to each element of the Array date[].
 	
