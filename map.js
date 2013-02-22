@@ -38,14 +38,20 @@ requestID++;
 		
 }
 var oriCirc;
+
+
 function changeOrigin(coors){
 
 	if(oriCirc != null){
 		oriCirc.setLatLong(coords);
 	}else{
 	
-	var oriCirc = L.marker(coors).addTo(map);
+		var oriCirc = L.marker(coors).addTo(map);
 	}
+}
+
+function chSlide(){
+	console.log(document.getElementById("budget").value);
 }
 
 function updat(cCode){

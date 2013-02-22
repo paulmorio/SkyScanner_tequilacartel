@@ -56,15 +56,20 @@ function getRequest(json){
 		var city = idToCity[q.OutboundLeg.DestinationId];
 		var start = idToCity[q.OutboundLeg.OriginId];
 		city = city.split('/')[0];
-		cityPriceId = Math.floor(q.MinPrice / 25);
+		cityPriceId = Math.floor(q.MinPrice / 10);
 		if(citiesByPrices[cityPriceId] == null){
-			citiesByPrices[cityPriceId] = new Object();
+			citiesByPrices[cityPriceId] = new Array();
 		}
-		citiesByPrices[cityPriceId].origin = city;
-		citiesByPrices[cityPriceId].destination = start;
-		citiesByPrices[cityPriceId].minPrice = q.MinPrice;
-		citiesByPrices[cityPriceId].departure = q.OutboundLeg.DepartureDate;
-		citiesByPrices[cityPriceId].arrival = q.InboundLeg.DepartureDate;
+		cityByPrice = new Object();
+		
+		cityByPrice.origin = city;
+		cityByPrice.destination = start;
+		cityByPrice.minPrice = q.MinPrice;
+		cityByPrice.departure = q.OutboundLeg.DepartureDate;
+		cityByPrice.arrival = q.InboundLeg.DepartureDate;
+		
+		citiesByPrices[cityPriceId].push(cityByPrice);
+		
 		if(cityCoordinates[city] == null){
 			cityCoordinates[city] = coords(city);
 		}
@@ -84,6 +89,7 @@ function getRequest(json){
 			}
 		//console.log(city);
 		//console.log(minCity[city]);
+		
 	}
 }
 var minCountry;
