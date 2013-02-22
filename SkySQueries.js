@@ -39,7 +39,7 @@ function minPrice(){
 
 //answer from anywhere request
 function getRequest(json,rID){
-	console.log(json);
+	//console.log(json);
 	if(json.Quotes == null){
 		return;
 	}
@@ -62,8 +62,8 @@ function getRequest(json,rID){
 		}
 		cityByPrice = new Object();
 		
-		cityByPrice.origin = city;
-		cityByPrice.destination = start;
+		cityByPrice.destination = city;
+		cityByPrice.origin = start;
 		cityByPrice.minPrice = q.MinPrice;
 		cityByPrice.departure = q.OutboundLeg.DepartureDate;
 		cityByPrice.arrival = q.InboundLeg.DepartureDate;
@@ -171,8 +171,9 @@ function chOri(){
 			}		
 			xmlhttp.onreadystatechange=function(){
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){//xmlhttp.readyState==4 &&
-
+			
 				var x = eval(xmlhttp.responseText);
+				console.log(x);
 				if(x!=null){
 					ori = x[0].i;
 					coords(x[0].en,-1);
@@ -256,8 +257,18 @@ function coords(name,rID){
 			}		
 			xmlhttp.onreadystatechange=function(){
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){
-			coo = eval('['+xmlhttp.responseText+']').slice(2,4);
-			cityCoordinates[name] = coo;
+			
+			//my_JSON_object = JSON.parse(xmlhttp.responseText);
+			//console.log(xmlhttp.responseText);
+			coo = eval('['+xmlhttp.responseText+']');
+			if(coo[0] == 620){
+				//coords(name,rID);
+				//console.log('rereq');
+				return;
+			}
+			coo = coo.slice(2,4)
+				cityCoordinates[name] = coo;
+				//console.log(name, coo, xmlhttp.responseText)
 				if(requestID == rID){
 					chSlide();
 					
@@ -275,6 +286,7 @@ function coords(name,rID){
 		}
 		var my_JSON_object = {};
 		xmlhttp.open("GET","http://maps.google.com/maps/geo?q="+name+"&output=csv&sensor=false",true);		
+		//xmlhttp.open("GET","http://maps.googleapis.com/maps/api/geocode/json?address="+name+"&sensor=true");
 		xmlhttp.send();
 	
 }

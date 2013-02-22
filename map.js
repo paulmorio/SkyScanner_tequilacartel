@@ -44,7 +44,7 @@ var oriCirc;
 function changeOrigin(coors){
 
 	if(oriCirc != null){
-	console.log(coors);
+	//console.log(coors);
 		oriCirc.setLatLng(coors);
 	}else{
 		var greenIcon = L.icon({
@@ -67,18 +67,21 @@ function chSlide(){
 	//console.log();
 	var maxH = document.getElementById("budget").value/10;
 	for(i =0; i<maxH;i++){
-		cities = citiesByPrices[i];
-		var greenIcon = L.icon({
-		    iconUrl: 'arrow.png',
-		    //shadowUrl: 'leaf-shadow.png',
-
-		    iconSize:     [40, 50], // size of the icon
-		    //shadowSize:   [50, 64], // size of the shadow
-		    iconAnchor:   [20, 49], // point of the icon which will correspond to marker's location
-		    //shadowAnchor: [4, 62],  // the same for the shadow
-		    //popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-		});
-		L.marker(cityCoordinates[cities[0].destination]);
+	
+		var cities = citiesByPrices[i];
+		
+		//console.log(citiesByPrices,i);
+		if(cities == null || cities.length == 0){
+			continue;
+		}
+			
+		//for(i = 0;i<cities.length;i++){
+			if(cityCoordinates[cities[0].destination] != null){
+				L.marker(cityCoordinates[cities[0].destination],{icon: arrow}).addTo(map);
+			}
+		//}
+		//console.log(cities[0].destination, cityCoordinates[cities[0].destination]);
+		//L.marker(cityCoordinates[cities[0].destination],{icon: arrow}).addTo(map);
 	}
 }
 
@@ -107,9 +110,23 @@ if(layer == null){
     var layerHash;
     var citiesByPrices;
     var cityCoordinates;
+    var arrow;
 function initialize(){
 	//makeTable();
 	//loadPrices();
+	
+	
+	arrow = L.icon({
+		    iconUrl: 'arrow.png',
+		    //shadowUrl: 'leaf-shadow.png',
+
+		    iconSize:     [40, 32], // size of the icon
+		    //shadowSize:   [50, 64], // size of the shadow
+		    iconAnchor:   [20, 31], // point of the icon which will correspond to marker's location
+		    //shadowAnchor: [4, 62],  // the same for the shadow
+		    //popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+		});
+		
 	minCity = new Object();
 	minCountry = new Object();
 	cCodes = new Object();
