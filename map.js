@@ -58,9 +58,19 @@ function changeOrigin(coors){
 		    //popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 		});
 		oriCirc = L.marker(coors, {icon: greenIcon});
+		
 		//console.log(oriCirc);
 		oriCirc.addTo(map);
 	}
+}
+var popup = L.popup();
+function onMarkClick(e){
+
+
+
+var city =e.target.city;
+e.target.bindPopup("<b>"+ city +"</b><br>"+ citiesByPrices[city].minPrice.toFixed(2) + " GBP" + "<br>Dep: " + citiesByPrices[city].departure.split("T")[0]+ "<br>Arr: " + citiesByPrices[city].arrival.split("T")[0]).openPopup();
+
 }
 
 var group;
@@ -71,9 +81,12 @@ function chSlide(){
 	group = L.layerGroup();
 	
 	for(x in citiesByPrices){
-		console.log(x,cityCoordinates[x]);
+		//console.log(x,cityCoordinates[x]);
 		if(cityCoordinates[x] != null && citiesByPrices[x].minPrice<=budget){
-			group.addLayer(L.marker(cityCoordinates[x],{icon: arrow}));
+			ll =L.marker(cityCoordinates[x],{icon: arrow});
+			ll.city = x;
+			group.addLayer(ll);
+			ll.on('click', onMarkClick);
 		}
 	}
 	group.addTo(map);

@@ -79,7 +79,7 @@ function getRequest(json,rID){
 				citiesByPrices[city].minPrice = q.MinPrice;
 				citiesByPrices[city].departure = q.OutboundLeg.DepartureDate;
 				citiesByPrices[city].arrival = q.InboundLeg.DepartureDate;
-				console.log(citiesByPrices[city].destination);
+				//console.log(citiesByPrices[city].destination);
 			
 			}else if(minCity[city]>q.MinPrice){
 				minCity[city] = q.MinPrice;
@@ -89,7 +89,7 @@ function getRequest(json,rID){
 				citiesByPrices[city].minPrice = q.MinPrice;
 				citiesByPrices[city].departure = q.OutboundLeg.DepartureDate;
 				citiesByPrices[city].arrival = q.InboundLeg.DepartureDate;
-				console.log(citiesByPrices[city].destination);
+				//console.log(citiesByPrices[city].destination);
 			}
 			
 			
