@@ -189,7 +189,7 @@ function chOri(){
 				console.log(x);
 				if(x!=null){
 					ori = x[0].i;
-					coords(x[0].en,-1);
+					coords(x[0].en,-9999);
 					
 					change();
 				}
@@ -287,10 +287,10 @@ function coords(name,rID){
 					
 					//update pin
 					
-				}else if(rID = -1){
+				}else if(rID = -9999){
 
 					if(ori){
-						changeOrigin(coo);
+						changeOrigin(coo.slice(0));
 					}
 				}
 				
