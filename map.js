@@ -26,6 +26,7 @@ var requestID = 0;
 function change(){
 minCity = new Object();
 	minCountry = new Object();
+	citiesByPrices = new Object();
 			geojson.eachLayer(function (layer) {
 			layer.feature.properties.minPrice = null;
 			geojson.resetStyle(layer);
@@ -35,6 +36,16 @@ minCity = new Object();
 requestID++;
 	minPrice();
 		
+}
+var oriCirc;
+function changeOrigin(coors){
+
+	if(oriCirc != null){
+		oriCirc.setLatLong(coords);
+	}else{
+	
+	var oriCirc = L.marker(coors).addTo(map);
+	}
 }
 
 function updat(cCode){
@@ -60,6 +71,8 @@ if(layer == null){
     
     var minCity;
     var layerHash;
+    var citiesByPrices;
+    var cityCoordinates;
 function initialize(){
 	//makeTable();
 	//loadPrices();
@@ -67,6 +80,8 @@ function initialize(){
 	minCountry = new Object();
 	cCodes = new Object();
 	layerHash = new Object();
+	citiesByPrices = new Object();
+	cityCoordinates = new Object();
 selected = new Array();
       var position = new L.LatLng(47.723713744687274, 20.3);
       var zoom = 3; 
@@ -116,6 +131,11 @@ geojson.eachLayer(function (layer) {
     	
 	});
 
+
+	
+
+ 
+ 	chOri();
  }
 
 

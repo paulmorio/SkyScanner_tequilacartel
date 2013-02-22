@@ -39,7 +39,7 @@ function minPrice(){
 
 //answer from anywhere request
 function getRequest(json){
-
+	console.log(json);
 	if(json.Quotes == null){
 		return;
 	}
@@ -54,9 +54,24 @@ function getRequest(json){
 	for(i =0;i<json.Quotes.length;i++){
 		q = json.Quotes[i];
 		var city = idToCity[q.OutboundLeg.DestinationId];
+		var start = idToCity[q.OutboundLeg.OriginId];
 		city = city.split('/')[0];
+		cityPriceId = Math.floor(q.MinPrice / 25);
+		if(citiesByPrices[cityPriceId] == null){
+			citiesByPrices[cityPriceId] = new Object();
+		}
+		citiesByPrices[cityPriceId].origin = city;
+		citiesByPrices[cityPriceId].destination = start;
+		citiesByPrices[cityPriceId].minPrice = q.MinPrice;
+		citiesByPrices[cityPriceId].departure = q.OutboundLeg.DepartureDate;
+		citiesByPrices[cityPriceId].arrival = q.InboundLeg.DepartureDate;
+		if(cityCoordinates[city] == null){
+			cityCoordinates[city] = coords(city);
+		}
+		//console.log(cityPriceId, citiesByPrices[cityPriceId]);
 		if(minCity[city] == null){
 			minCity[city] = q.MinPrice;
+			
 			
 			}else if(minCity[city]>q.MinPrice){
 				minCity[city] = q.MinPrice;
@@ -127,6 +142,17 @@ var xmlhttp;
 	
 }
 
+///drop change
+function dropOrigin(city){
+	var circle = L.circle([51.508, -0.11], 500, {
+					    color: 'red',
+					    fillColor: '#f03',
+					    fillOpacity: 0.5
+					}).addTo(map);
+}
+
+
+
 function chOri(){
 		var xmlhttp;
 		
@@ -137,15 +163,16 @@ function chOri(){
 				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 			}		
 			xmlhttp.onreadystatechange=function(){
-			console.log(xmlhttp.readyState);
-			console.log(xmlhttp.status);
-			console.log(eval(xmlhttp.responseText));
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){//xmlhttp.readyState==4 &&
 
 				var x = eval(xmlhttp.responseText);
 				if(x!=null){
 				//	my_JSON_object = JSON.parse(xmlhttp.responseText);
 					ori = x[0].i;
+					//dropOrigin
+					coords(x[0].en);
+					//console.log(x);
+					
 					change();
 				}
 				
@@ -154,9 +181,10 @@ function chOri(){
 		}
 		var my_JSON_object = {};
 		city = document.getElementById("origin").value;
-		console.log("http://api.skyscanner.net/as.ashx?&t="+city+"&l=en&d=1&c=GBP");
+		//console.log("http://api.skyscanner.net/as.ashx?&t="+city+"&l=en&d=1&c=GBP");
 		xmlhttp.open("GET","http://api.skyscanner.net/as.ashx?&t="+city+"&l=en&d=1&c=GBP",true);		
 		xmlhttp.send();
+		
 		
 	
 }
@@ -214,8 +242,8 @@ function dateFormat(x) {
 	
 	
 	
-function airportLocation(code){
-var xmlhttp;
+function coords(name){
+		var xmlhttp;
 			
 			if (window.XMLHttpRequest){//code for modern browsers
 				xmlhttp=new XMLHttpRequest();
@@ -224,12 +252,16 @@ var xmlhttp;
 			}		
 			xmlhttp.onreadystatechange=function(){
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){
-				//console.log(xmlhttp.responseText);
+				//console.log(coo);
+				coo = eval('['+xmlhttp.responseText+']').slice(2,4);
+				//console.log(coo);//xmlhttp.responseText);
+				//L.marker(coo).addTo(map);
+				changeOrigin(coo);
 			}
 			
 		}
 		var my_JSON_object = {};
-		xmlhttp.open("GET","http://maps.google.com/maps/geo?q="+code+"&output=csv&sensor=false",true);		
+		xmlhttp.open("GET","http://maps.google.com/maps/geo?q="+name+"&output=csv&sensor=false",true);		
 		xmlhttp.send();
 	
 }
