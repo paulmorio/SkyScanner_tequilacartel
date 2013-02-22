@@ -63,9 +63,21 @@ function changeOrigin(coors){
 	}
 }
 
+var group;
 function chSlide(){
 	//console.log();
-	var maxH = document.getElementById("budget").value/10;
+	var budget = document.getElementById("budget").value;
+	 group.clearLayers();
+	group = L.layerGroup();
+	
+	for(x in citiesByPrices){
+		console.log(x,cityCoordinates[x]);
+		if(cityCoordinates[x] != null && citiesByPrices[x].minPrice<=budget){
+			group.addLayer(L.marker(cityCoordinates[x],{icon: arrow}));
+		}
+	}
+	group.addTo(map);
+	/*
 	for(i =0; i<maxH;i++){
 	
 		var cities = citiesByPrices[i];
@@ -82,7 +94,7 @@ function chSlide(){
 		//}
 		//console.log(cities[0].destination, cityCoordinates[cities[0].destination]);
 		//L.marker(cityCoordinates[cities[0].destination],{icon: arrow}).addTo(map);
-	}
+	}*/
 }
 
 function updat(cCode){
@@ -114,7 +126,7 @@ if(layer == null){
 function initialize(){
 	//makeTable();
 	//loadPrices();
-	
+	group = L.layerGroup();
 	
 	arrow = L.icon({
 		    iconUrl: 'arrow.png',

@@ -56,31 +56,44 @@ function getRequest(json,rID){
 		var city = idToCity[q.OutboundLeg.DestinationId];
 		var start = idToCity[q.OutboundLeg.OriginId];
 		city = city.split('/')[0];
-		cityPriceId = Math.ceil(q.MinPrice / 10);
-		if(citiesByPrices[cityPriceId] == null){
-			citiesByPrices[cityPriceId] = new Array();
-		}
-		cityByPrice = new Object();
+		//cityPriceId = Math.ceil(q.MinPrice / 10);
+
+		//if(citiesByPrices[city] == null)
+			
+
 		
-		cityByPrice.destination = city;
-		cityByPrice.origin = start;
-		cityByPrice.minPrice = q.MinPrice;
-		cityByPrice.departure = q.OutboundLeg.DepartureDate;
-		cityByPrice.arrival = q.InboundLeg.DepartureDate;
 		
-		citiesByPrices[cityPriceId].push(cityByPrice);
+		
 		
 		if(cityCoordinates[city] == null){
 			coords(city,rID);
+			
 		}
 		//console.log(cityPriceId, citiesByPrices[cityPriceId]);
 		if(minCity[city] == null){
 			minCity[city] = q.MinPrice;
-			
+			citiesByPrices[city] = new Object()
+				
+				citiesByPrices[city].destination = city;
+				citiesByPrices[city].origin = start;
+				citiesByPrices[city].minPrice = q.MinPrice;
+				citiesByPrices[city].departure = q.OutboundLeg.DepartureDate;
+				citiesByPrices[city].arrival = q.InboundLeg.DepartureDate;
+				console.log(citiesByPrices[city].destination);
 			
 			}else if(minCity[city]>q.MinPrice){
 				minCity[city] = q.MinPrice;
+		
+				citiesByPrices[city].destination = city;
+				citiesByPrices[city].origin = start;
+				citiesByPrices[city].minPrice = q.MinPrice;
+				citiesByPrices[city].departure = q.OutboundLeg.DepartureDate;
+				citiesByPrices[city].arrival = q.InboundLeg.DepartureDate;
+				console.log(citiesByPrices[city].destination);
 			}
+			
+			
+			
 		if(cCodes[city]== null){
 			getCities(city);
 			}else{
