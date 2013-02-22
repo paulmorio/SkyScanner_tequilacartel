@@ -79,11 +79,9 @@
 		}
 		
 		div.skydate{
-		height: 700px;
-		min-height: 300px;
+		height: 600px;
 		width:200px;
 		padding: 1px;
-		border-right: 5px solid skyblue;
 		background-color:skyblue;
 		color: black;
 		float:left;
@@ -91,7 +89,6 @@
 		}
 		
 		table {border-collapse:collapse;}
-		table {border :10px solid skyblue;}
 		th {border:10px solid skyblue; background-color: skyblue; color: white}
 		td {border:1px solid #353535; background-color: white; color: skyblue; text-align:center; padding: 10px;}
 
@@ -118,7 +115,7 @@
 				<b style="margin-left: 10px">BUDGET (GBP):</b> 
 
 						<div style="margin-left: 10px; float: right;">	<link rel="stylesheet" type="text/css" href="range.css"/>
-							<input type="range" id= "budget" name="range1" min="0" max="2500" step="10" value="100" onchange="chSlide()"/>
+							<input type="range" name="range1" min="0" max="2500" step="25" value="100" />
 							<script>
 								$(":range").rangeinput();
 							</script>
@@ -129,17 +126,22 @@
 		</div>
 		
 		<div class="skybg1" id="container">
-		
-			<div class="skydate" id="leftcontainer" style = "float: left;">
-				<div class="skydate" id="dates">
-				<iframe src="table.html" width="200" height ="700"></iframe>
-				</div>
 				
+			<div id="datecon" style="float: left; width: 205px; height: 700px;">	
+				<div id="datetits" style= "width: 205px; height:100px; background-color: #353535; text-align: center; color: white;"> <h2> <b> DEPARTURE DATES</b> </h2>
+				</div>
+			
+				<div class="skydate" id="leftcontainer" style = "float: bottom left;">
+					<div class="skydate" id="dates">
+					<iframe src="table.html" width="200" height ="600"></iframe>
+					</div>
+					
+				</div>
 			</div>
 
-			<div id="map" style="background-color:skyblue; height:700px;">
-			</div>
-				
+				<div id="map" style="background-color:skyblue; height:700px;">
+				</div>
+					
 		</div>
 		
 		<div id="footer" style="background-color:#353535; clear:both;text-align:center; color: white;">
