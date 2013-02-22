@@ -38,7 +38,7 @@ function minPrice(){
 
 
 //answer from anywhere request
-function getRequest(json){
+function getRequest(json,rID){
 	console.log(json);
 	if(json.Quotes == null){
 		return;
@@ -56,7 +56,7 @@ function getRequest(json){
 		var city = idToCity[q.OutboundLeg.DestinationId];
 		var start = idToCity[q.OutboundLeg.OriginId];
 		city = city.split('/')[0];
-		cityPriceId = Math.floor(q.MinPrice / 10);
+		cityPriceId = Math.ceil(q.MinPrice / 10);
 		if(citiesByPrices[cityPriceId] == null){
 			citiesByPrices[cityPriceId] = new Array();
 		}
@@ -71,7 +71,7 @@ function getRequest(json){
 		citiesByPrices[cityPriceId].push(cityByPrice);
 		
 		if(cityCoordinates[city] == null){
-			cityCoordinates[city] = coords(city);
+			coords(city,rID);
 		}
 		//console.log(cityPriceId, citiesByPrices[cityPriceId]);
 		if(minCity[city] == null){
@@ -173,11 +173,8 @@ function chOri(){
 
 				var x = eval(xmlhttp.responseText);
 				if(x!=null){
-				//	my_JSON_object = JSON.parse(xmlhttp.responseText);
 					ori = x[0].i;
-					//dropOrigin
-					coords(x[0].en);
-					//console.log(x);
+					coords(x[0].en,-1);
 					
 					change();
 				}
@@ -209,7 +206,7 @@ function loadPrices(outb,inb,rID){
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){
 				my_JSON_object = JSON.parse(xmlhttp.responseText);
 				if(requestID == rID){
-					getRequest(my_JSON_object)
+					getRequest(my_JSON_object,rID)
 					//console.log(my_JSON_object);
 				}
 			}
@@ -248,7 +245,7 @@ function dateFormat(x) {
 	
 	
 	
-function coords(name){
+function coords(name,rID){
 		var xmlhttp;
 			
 			if (window.XMLHttpRequest){//code for modern browsers
@@ -258,11 +255,20 @@ function coords(name){
 			}		
 			xmlhttp.onreadystatechange=function(){
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){
-				//console.log(coo);
-				coo = eval('['+xmlhttp.responseText+']').slice(2,4);
-				//console.log(coo);//xmlhttp.responseText);
-				//L.marker(coo).addTo(map);
-				changeOrigin(coo);
+			coo = eval('['+xmlhttp.responseText+']').slice(2,4);
+			
+				if(requestID == rID){
+				
+					cityCoordinates[name] = coo;
+					//update pin
+					
+				}else if(rID = -1){
+
+					if(ori){
+						changeOrigin(coo);
+					}
+				}
+				
 			}
 			
 		}

@@ -24,6 +24,7 @@ function style(feature) {
 }
 var requestID = 0;
 function change(){
+requestID++;
 minCity = new Object();
 	minCountry = new Object();
 	citiesByPrices = new Object();
@@ -33,7 +34,7 @@ minCity = new Object();
 	});
 
 
-requestID++;
+	
 	minPrice();
 		
 }
@@ -43,10 +44,12 @@ var oriCirc;
 function changeOrigin(coors){
 
 	if(oriCirc != null){
+	console.log(coors);
 		oriCirc.setLatLong(coords);
 	}else{
 	
-		var oriCirc = L.marker(coors).addTo(map);
+		oriCirc = L.marker(coors);
+		oriCirc.addTo(map);
 	}
 }
 
