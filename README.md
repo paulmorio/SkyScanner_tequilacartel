@@ -1,3 +1,6 @@
+
+Project made for first hackathon.
+
 Mapinator
 =========
 An interface for SkyScanner querying with additional functionalities.
